@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import { useArticles } from '../context/ArticlesContext'; // adjust path as needed
 import toast from 'react-hot-toast';
 
 const ArticleForm = ({ initialData = {}, onSuccess }) => {
     const [title, setTitle] = useState(initialData.title || '');
     const [content, setContent] = useState(initialData.content || '');
     const isEditing = !!initialData._id;
+
+    const { createArticle, updateArticle } = useArticles();
 
     const toolbarOptions = [
         [{ header: [1, 2, 3, false] }],
@@ -18,51 +21,24 @@ const ArticleForm = ({ initialData = {}, onSuccess }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
-        const token = localStorage.getItem('token');
         const articleData = { title, content };
-        const endpoint = isEditing
-            ? `/api/articles/${initialData._id}`
-            : '/api/articles';
-        const method = isEditing ? 'PUT' : 'POST';
-
         const toastId = toast.loading(isEditing ? 'Updating article...' : 'Creating article...');
 
         try {
-            const res = await fetch(endpoint, {
-                method,
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${token}`,
-                },
-                body: JSON.stringify(articleData),
-            });
-
-            if (!res.ok) {
-                const errorData = await res.json();
-                throw new Error(errorData.message || 'Failed to save article');
+            if (isEditing) {
+                await updateArticle(initialData._id, articleData);
+                toast.success('Article updated!', { id: toastId });
+            } else {
+                await createArticle(articleData);
+                toast.success('Article created!', { id: toastId });
             }
-
-            toast.success(isEditing ? 'Article updated successfully!' : 'Article created successfully!', {
-                id: toastId,
-                icon: '✅',
-                style: {
-                    borderRadius: '8px',
-                    background: '#1e293b',
-                    color: '#fff',
-                },
-            });
 
             onSuccess?.();
         } catch (err) {
-            toast.error(`Error: ${err.message}`, {
+            toast.error('Something went wrong.', {
                 id: toastId,
                 icon: '⚠️',
-                style: {
-                    borderRadius: '8px',
-                    background: '#7f1d1d',
-                    color: '#fff',
-                },
+                style: { background: '#7f1d1d', color: '#fff' },
             });
         }
     };
