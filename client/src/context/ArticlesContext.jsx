@@ -1,4 +1,3 @@
-// src/context/ArticlesContext.jsx
 import { createContext, useContext, useEffect, useState } from 'react';
 
 const ArticlesContext = createContext();
