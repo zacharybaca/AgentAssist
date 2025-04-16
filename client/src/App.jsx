@@ -1,6 +1,7 @@
 import './App.css';
 import { useNavigate, Routes, Route } from 'react-router-dom';
 import ArticleForm from "./components/AdminPanel/ArticleForm/ArticleForm";
+import AdminArticlesView from "./components/AdminPanel/AdminArticlesView/AdminArticlesView.jsx";
 import { Toaster } from 'react-hot-toast';
 
 function App() {
@@ -18,7 +19,8 @@ function App() {
         }} />
       </div>
       <Routes>
-        <Route path="/articles/form" element={<ArticleForm />} />
+        <Route path="/admin/article-form" element={<ArticleForm />} />
+        <Route path="/admin/articles" element={<AdminArticlesView />} />
       </Routes>
     </>
   )
