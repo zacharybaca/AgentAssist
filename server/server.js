@@ -4,6 +4,8 @@ import dotenv from "dotenv";
 import cors from "cors";
 
 import articleRouter from "./routes/articleRouter.js";
+import categoryRouter from "./routes/categoryRouter.js";
+import authRouter from "./routes/authRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -13,6 +15,8 @@ app.use(express.json());
 
 // Routes
 app.use("/api/articles", articleRouter);
+app.use("/api/auth", authRouter);
+app.use("/api/categories", categoryRouter);
 
 const PORT = process.env.PORT || 9000;
 

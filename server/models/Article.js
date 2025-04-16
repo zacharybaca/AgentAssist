@@ -1,13 +1,21 @@
+// models/Article.js
 import mongoose from "mongoose";
 
-const articleSchema = new mongoose.Schema(
-  {
-    title: { type: String, required: true },
-    category: { type: String, required: true },
-    tags: [String],
-    content: { type: String, required: true },
+const articleSchema = new mongoose.Schema({
+  title: {
+    type: String,
+    required: true,
   },
-  { timestamps: true }
-);
+  body: String,
+  category: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Category", // <-- reference by model name
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
 
-export default mongoose.model("Article", articleSchema);
+const Article = mongoose.model("Article", articleSchema);
+export default Article;
