@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useArticles } from '../context/ArticlesContext';
+import toast from 'react-hot-toast';
+
 
 const ArticleForm = ({ initialData = {}, onSuccess }) => {
   const [title, setTitle] = useState(initialData.title || '');
@@ -20,18 +22,20 @@ const ArticleForm = ({ initialData = {}, onSuccess }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     const articleData = { title, content };
-
+  
     try {
       if (isEditing) {
         await updateArticle(initialData._id, articleData);
+        toast.success('Article updated successfully');
       } else {
         await createArticle(articleData);
+        toast.success('Article created successfully');
       }
-      onSuccess?.(); // Optional callback to refresh view, etc.
+      onSuccess?.();
     } catch (err) {
       console.error('Error saving article:', err.message);
+      toast.error('Something went wrong while saving the article');
     }
   };
 
