@@ -8,21 +8,16 @@ function App() {
   const navigate = useNavigate();
 
   return (
-
-    <>
+    <div>
       <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
-      <div>
-        <h1>Vite + React</h1>
-        <h1>This is the App Component.</h1>
-        <ArticleForm onSuccess={() => {
-          navigate('/articles');
-        }} />
-      </div>
+      <h1>Agent Assist</h1>
       <Routes>
-        <Route path="/admin/article-form" element={<ArticleForm />} />
+        <Route path="/admin/article-form" element={<ArticleForm onSuccess={() => {
+          navigate('/articles');
+        }} />} />
         <Route path="/admin/articles" element={<AdminArticlesView />} />
       </Routes>
-    </>
+    </div>
   )
 }
 
