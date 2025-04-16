@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { useArticles } from '../context/ArticlesContext'; // adjust path as needed
+import { useArticles } from '../context/ArticlesContext'; 
 import toast from 'react-hot-toast';
 
 const ArticleForm = ({ initialData = {}, onSuccess }) => {
