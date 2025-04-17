@@ -14,14 +14,14 @@ function App() {
     const loader = document.getElementById("loader");
     const loaderContainer = document.getElementById("loader-container");
   
-    if (loader && loaderContainer) {
+    if (loading && loader && loaderContainer) {
       setTimeout(() => {
         loader.style.display = 'none';
         loaderContainer.style.display = 'none';
         setLoading(false);
       }, 6000);
     }
-  }, [loader, loaderContainer]);
+  }, [loading]);
   
   return (
     !loading && (
