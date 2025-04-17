@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
-import { useArticles } from '../context/ArticlesContext'; 
+import { useArticles } from '../../../hooks/useArticles.js';
 import toast from 'react-hot-toast';
 
 const ArticleForm = ({ initialData = {}, onSuccess }) => {
@@ -34,8 +34,8 @@ const ArticleForm = ({ initialData = {}, onSuccess }) => {
             }
 
             onSuccess?.();
-        } catch (err) {
-            toast.error('Something went wrong.', {
+        } catch (error) {
+            toast.error(error, {
                 id: toastId,
                 icon: '⚠️',
                 style: { background: '#7f1d1d', color: '#fff' },

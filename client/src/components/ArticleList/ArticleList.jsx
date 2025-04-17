@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useArticles } from '../context/ArticlesContext';
-import ConfirmModal from './ConfirmModal';
+import { useArticles } from '../../hooks/useArticles.js';
+import ConfirmModal from '../ConfirmModal/ConfirmModal.jsx';
 
 const ArticleList = ({ onEdit }) => {
   const { articles, deleteArticle } = useArticles();
