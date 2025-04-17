@@ -1,6 +1,4 @@
-#main-app-container {
-  display: flex;
-  justify-content: center;
+#root {
   min-width: 100%;
   max-width: 100%;
   min-height: 100vh;
@@ -11,6 +9,11 @@
   background-image: url('./assets/agent-assist-background-image.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
+}
+
+#main-app-container {
+  display: flex;
+  justify-content: center;
 }
 
 #main-app-container img {
