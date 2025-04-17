@@ -18,7 +18,7 @@ function App() {
         loader.style.display = 'none';
         loaderContainer.style.display = 'none';
         setLoading(false);
-      }, 3000);
+      }, 6000);
     }
   }, [loader, loaderContainer, loading]);
 
