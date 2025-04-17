@@ -5,7 +5,6 @@ import ArticleForm from "./components/AdminPanel/ArticleForm/ArticleForm";
 import AdminArticlesView from "./components/AdminPanel/AdminArticlesView/AdminArticlesView.jsx";
 import { Toaster } from 'react-hot-toast';
 import Logo from './assets/agent-assist-icon-no-background.png';
-import Loader from "./components/Loader/Loader.jsx";
 
 function App() {
   const navigate = useNavigate();
@@ -14,20 +13,23 @@ function App() {
   const loaderContainer = document.getElementById("loader-container");
 
   useEffect(() => {
-    if (loader && loaderContainer) {
+    if (loading && loader && loaderContainer) {
       setTimeout(() => {
         loader.style.display = 'none';
         loaderContainer.style.display = 'none';
         setLoading(false);
-      }, 6000);
+      }, 3000);
     }
-  }, [loader, loaderContainer]);
+  }, [loader, loaderContainer, loading]);
 
   return (
     !loading && (
       <div id="main-app-container">
-        <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
-        <img src={Logo} alt="logo" />
+        <div id="logo-container">
+          <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
+          <img src={Logo} alt="logo" />
+          <h1>☎️"Answers at the speed of your next call"☎️</h1>
+        </div>
         <Routes>
           <Route path="/admin/article-form" element={<ArticleForm onSuccess={() => {
             navigate('/articles');

@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400..700&display=swap');
+
 #loader {
   display: flex;
   justify-content: center;
@@ -21,13 +23,23 @@
 
 #loader-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: 10px;
   min-width: 100%;
   max-width: 100%;
   min-height: 100vh;
   max-height: 100vh;
   background-color:dodgerblue;
+}
+
+#loading-tagline h1 {
+  font-family: "Markazi Text", serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  font-size: xxx-large;
 }
 
 @-webkit-keyframes spin {
