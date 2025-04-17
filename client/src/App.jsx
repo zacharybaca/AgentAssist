@@ -10,16 +10,18 @@ import Loader from "./components/Loader/Loader.jsx";
 function App() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  
+  const loader = document.getElementById("loader");
+  const loaderContainer = document.getElementById("loader-container");
+
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 6000);
-
-    return () => clearTimeout(timer);
-  }, [loading]);
-
-  if (loading) return <Loader />;
+    if (loader && loaderContainer) {
+      setTimeout(() => {
+        loader.style.display = 'none';
+        loaderContainer.style.display = 'none';
+        setLoading(false);
+      }, 6000);
+    }
+  }, [loader, loaderContainer]);
 
   return (
     !loading && (
