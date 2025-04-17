@@ -1,6 +1,22 @@
 #root {
-  max-width: 1280px;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 100vh;
+  max-height: 100vh;
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  background-image: url('./assets/agent-assist-background-image.png');
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+#main-app-container {
+  display: flex;
+  justify-content: center;
+}
+
+#main-app-container img {
+  width: 20%;
+  height: 40%;
 }
