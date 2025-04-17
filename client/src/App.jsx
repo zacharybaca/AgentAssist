@@ -5,24 +5,22 @@ import ArticleForm from "./components/AdminPanel/ArticleForm/ArticleForm";
 import AdminArticlesView from "./components/AdminPanel/AdminArticlesView/AdminArticlesView.jsx";
 import { Toaster } from 'react-hot-toast';
 import Logo from './assets/agent-assist-icon-no-background.png';
+import Loader from "./components/Loader/Loader.jsx";
 
 function App() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-
+  
   useEffect(() => {
-    const loader = document.getElementById("loader");
-    const loaderContainer = document.getElementById("loader-container");
-  
-    if (loading && loader && loaderContainer) {
-      setTimeout(() => {
-        loader.style.display = 'none';
-        loaderContainer.style.display = 'none';
-        setLoading(false);
-      }, 6000);
-    }
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 6000);
+
+    return () => clearTimeout(timer);
   }, [loading]);
-  
+
+  if (loading) return <Loader />;
+
   return (
     !loading && (
       <div id="main-app-container">
