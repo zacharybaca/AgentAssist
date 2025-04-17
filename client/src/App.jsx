@@ -9,10 +9,11 @@ import Logo from './assets/agent-assist-icon-no-background.png';
 function App() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
-  const loader = document.getElementById("loader");
-  const loaderContainer = document.getElementById("loader-container");
 
   useEffect(() => {
+    const loader = document.getElementById("loader");
+    const loaderContainer = document.getElementById("loader-container");
+  
     if (loader && loaderContainer) {
       setTimeout(() => {
         loader.style.display = 'none';
@@ -21,7 +22,7 @@ function App() {
       }, 6000);
     }
   }, [loader, loaderContainer]);
-
+  
   return (
     !loading && (
       <div id="main-app-container">
