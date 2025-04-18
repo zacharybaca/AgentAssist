@@ -1,5 +1,6 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
-import { AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { X } from 'lucide-react'; // You can replace this with any icon
 
 const ConfirmModal = ({ isOpen, onCancel, onConfirm, message }) => {
