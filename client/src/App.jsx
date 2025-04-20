@@ -5,6 +5,7 @@ import ArticleForm from "./components/AdminPanel/ArticleForm/ArticleForm";
 import AdminArticlesView from "./components/AdminPanel/AdminArticlesView/AdminArticlesView.jsx";
 import { Toaster } from 'react-hot-toast';
 import Logo from './assets/agent-assist-icon-no-background.png';
+import NavBar from './components/NavBar/NavBar.jsx';
 
 function App() {
   const navigate = useNavigate();
@@ -25,6 +26,9 @@ function App() {
   return (
     !loading && (
       <div id="main-app-container">
+        <div id="nav-bar-app-container">
+          <NavBar />
+        </div>
         <div id="logo-container">
           <Toaster position="top-right" toastOptions={{ duration: 4000 }} />
           <img src={Logo} alt="logo" />

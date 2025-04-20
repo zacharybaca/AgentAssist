@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './nav-bar.css';
 import MenuToggle from '../MenuToggle/MenuToggle.jsx';
 import Sidebar from '../SideBar/SideBar.jsx';
 
@@ -9,14 +10,13 @@ const Navbar = () => {
     const closeMenu = () => setMenuOpen(false);
 
     return (
-        <>
-            <nav className="flex items-center justify-between p-4 bg-gray-50 shadow z-50 relative">
-                <h1 className="text-lg font-bold text-blue-800">CallCenterPro</h1>
+        <div id="nav-main-container">
+            <nav id="nav-container">
                 <MenuToggle isOpen={menuOpen} toggle={toggleMenu} />
             </nav>
 
             <Sidebar isOpen={menuOpen} close={closeMenu} />
-        </>
+        </div>
     );
 };
 

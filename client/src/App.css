@@ -15,7 +15,13 @@
 
 #main-app-container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+}
+
+#nav-bar-app-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-bottom: 10px;
 }
 
 #logo-container {

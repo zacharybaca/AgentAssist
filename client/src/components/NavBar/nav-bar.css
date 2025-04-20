@@ -1,0 +1,8 @@
+#nav-main-container {
+    display: flex;
+}
+
+#nav-container {
+    display: flex;
+    gap: 10px;
+}

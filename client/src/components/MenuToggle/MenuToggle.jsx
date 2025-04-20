@@ -1,13 +1,14 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
-import { Menu, PhoneOff } from 'lucide-react';
+import './menu-toggle.css';
+import { Menu, PhoneOff, PhoneIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const MenuToggle = ({ isOpen, toggle }) => {
     return (
         <button
             onClick={toggle}
-            className="p-2 rounded-md bg-white shadow-md hover:bg-gray-100 transition"
+            className="phone-off-icon"
             aria-label={isOpen ? 'Close menu' : 'Open menu'}
         >
             <AnimatePresence mode="wait">
@@ -19,9 +20,12 @@ const MenuToggle = ({ isOpen, toggle }) => {
                     transition={{ duration: 0.2 }}
                 >
                     {isOpen ? (
-                        <PhoneOff className="text-red-600 w-7 h-7" />
+                        <PhoneOff />
                     ) : (
-                        <Menu className="text-blue-700 w-7 h-7" />
+                        <>
+                            <Menu />
+                            <PhoneIcon />
+                        </>
                     )}
                 </motion.div>
             </AnimatePresence>
