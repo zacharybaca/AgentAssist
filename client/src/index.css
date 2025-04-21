@@ -35,6 +35,7 @@ body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
+  cursor: url('./assets/cursor.png'), pointer;
 }
 
 /* A elements that don't have a class get default styles */
@@ -55,6 +56,10 @@ button,
 textarea,
 select {
   font: inherit;
+}
+
+button:hover, a:hover {
+  cursor: url('./assets/pointer.png'), pointer;
 }
 
 /* Remove all animations and transitions for people that prefer not to see them */

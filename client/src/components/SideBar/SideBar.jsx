@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import './side-bar.css';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Headphones, PhoneCall, UserCog } from 'lucide-react';
 
@@ -26,13 +27,19 @@ const Sidebar = ({ isOpen, close }) => {
                     >
                         <ul>
                             <li>
-                                <PhoneCall size={20} /> Call Logs
+                                <Link>
+                                    <PhoneCall size={20} /> Call Logs
+                                </Link>
                             </li>
                             <li>
+                                <Link>
                                 <Headphones size={20} /> Live Support
+                                </Link>
                             </li>
                             <li>
+                                <Link>
                                 <UserCog size={20} /> Agent Settings
+                                </Link>
                             </li>
                         </ul>
                     </motion.div>

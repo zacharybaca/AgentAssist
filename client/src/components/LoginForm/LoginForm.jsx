@@ -25,7 +25,7 @@ const LoginForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form id="login-form" onSubmit={handleSubmit}>
       {error && <p className="text-red-500">{error}</p>}
       <input name="username" onChange={handleChange} placeholder="Username" />
       <input name="password" type="password" onChange={handleChange} placeholder="Password" />

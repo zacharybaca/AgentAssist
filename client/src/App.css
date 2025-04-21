@@ -16,6 +16,7 @@
 #main-app-container {
   display: flex;
   flex-direction: column;
+  gap: 20px;
 }
 
 #nav-bar-app-container {
@@ -34,6 +35,18 @@
   gap: 10px;
   background-color: #E8E8E8;
   border-radius: 10px;
+  border: 3px solid black;
+}
+
+#login-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 100%;
+  max-width: 100%;
+  min-height: 30vh;
+  max-height: 30vh;
   border: 3px solid black;
 }
 
