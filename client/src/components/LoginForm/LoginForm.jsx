@@ -27,6 +27,7 @@ const LoginForm = () => {
   return (
     <form id="login-form" onSubmit={handleSubmit}>
       {error && <p className="text-red-500">{error}</p>}
+      <h1>Helping You Help Them — Sign In to AgentAssist</h1>
       <input name="username" onChange={handleChange} placeholder="Username" />
       <input name="password" type="password" onChange={handleChange} placeholder="Password" />
       <button type="submit">Login</button>

@@ -7,6 +7,7 @@ import { Toaster } from 'react-hot-toast';
 import Logo from './assets/agent-assist-icon-no-background.png';
 import NavBar from './components/NavBar/NavBar.jsx';
 import LoginForm from './components/LoginForm/LoginForm.jsx';
+import SignUpForm from './components/SignUpForm/SignUpForm.jsx';
 
 function App() {
   const navigate = useNavigate();
@@ -35,14 +36,23 @@ function App() {
           <img src={Logo} alt="logo" />
           <h1>☎️"Answers at the speed of your next call"☎️</h1>
         </div>
-        <div id="login-form-container">
-          <LoginForm />
-        </div>
+
         <Routes>
+
+          <Route path="/" element={
+            <div id="login-form-container">
+              <LoginForm />
+            </div>
+          } />
+
+          <Route path="/signup" element={<SignUpForm />} />
+
           <Route path="/admin/article-form" element={<ArticleForm onSuccess={() => {
             navigate('/articles');
           }} />} />
+
           <Route path="/admin/articles" element={<AdminArticlesView />} />
+
         </Routes>
       </div>
     )
