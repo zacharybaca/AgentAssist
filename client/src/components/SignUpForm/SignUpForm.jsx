@@ -17,15 +17,22 @@ function SignUpForm() {
         }));
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // send formData to backend, including formData.avatar
+    const handleChange = (e) => {
+        const [name, value] = e.target;
+        setFormData(prev => ({
+            ...prev,
+            [name]: value
+        }));
     };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    }
 
     return (
         <form onSubmit={handleSubmit}>
-            <input type="text" placeholder="Name" onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))} />
-            <input type="email" placeholder="Email" onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))} />
+            <input type="text" placeholder="Name" onChange={handleChange} />
+            <input type="email" placeholder="Email" onChange={handleChange} />
 
             <AvatarUpload onUploadComplete={handleAvatarUpload} />
 
