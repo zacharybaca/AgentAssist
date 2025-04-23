@@ -2,6 +2,7 @@ import './login-form.css';
 import { useAuth } from '../../hooks/useAuth.js';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import { LogIn } from 'lucide-react';
 
 const LoginForm = () => {
   const { login } = useAuth();
@@ -30,7 +31,7 @@ const LoginForm = () => {
       <h1>Helping You Help Them — Sign In to AgentAssist</h1>
       <input name="username" onChange={handleChange} placeholder="Username" />
       <input name="password" type="password" onChange={handleChange} placeholder="Password" />
-      <button type="submit">Login</button>
+      <button type="submit"><LogIn size={25}/> Login</button>
     </form>
   );
 };
