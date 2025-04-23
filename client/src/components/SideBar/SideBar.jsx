@@ -3,7 +3,7 @@ import './side-bar.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Headphones, PhoneCall, UserCog } from 'lucide-react';
+import { FileHeart, Newspaper, UserCog } from 'lucide-react';
 
 const Sidebar = ({ isOpen, close }) => {
     return (
@@ -28,17 +28,17 @@ const Sidebar = ({ isOpen, close }) => {
                         <ul>
                             <li>
                                 <Link>
-                                    <PhoneCall size={20} /> Call Logs
+                                    <Newspaper size={35} /> <h3>Articles</h3>
                                 </Link>
                             </li>
                             <li>
                                 <Link>
-                                <Headphones size={20} /> Live Support
+                                    <FileHeart size={35} /> <h3>My Favorite Articles</h3>
                                 </Link>
                             </li>
                             <li>
                                 <Link>
-                                <UserCog size={20} /> Agent Settings
+                                    <UserCog size={35} /> <h3>Agent Settings</h3>
                                 </Link>
                             </li>
                         </ul>
