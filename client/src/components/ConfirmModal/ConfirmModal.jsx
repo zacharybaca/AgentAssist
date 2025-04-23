@@ -4,7 +4,7 @@ import './confirm-modal.css';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SquareX } from 'lucide-react';
 
-const ConfirmModal = ({ isOpen, onCancel, onConfirm, message }) => {
+const ConfirmModal = ({ isOpen, onCancel, onConfirm, confirmButton, rejectButton, message }) => {
   const modalRef = useRef(null);
 
   // Focus the modal when it opens
@@ -23,7 +23,7 @@ const ConfirmModal = ({ isOpen, onCancel, onConfirm, message }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <>
+        <div id="modal-main-container">
           {/* Backdrop */}
           <motion.div
             className="modal-backdrop"
@@ -53,7 +53,7 @@ const ConfirmModal = ({ isOpen, onCancel, onConfirm, message }) => {
                 aria-label="Close modal"
                 type="button"
               >
-                <SquareX size={20} />
+                <SquareX size={40} />
               </button>
             </div>
 
@@ -65,14 +65,14 @@ const ConfirmModal = ({ isOpen, onCancel, onConfirm, message }) => {
 
             <div className="modal-footer">
               <button onClick={onCancel} type="button" className="modal-btn cancel-btn">
-                Cancel
+                {rejectButton}
               </button>
               <button onClick={onConfirm} type="button" className="modal-btn confirm-btn">
-                Delete
+                {confirmButton}
               </button>
             </div>
           </motion.div>
-        </>
+        </div>
       )}
     </AnimatePresence>
   );
