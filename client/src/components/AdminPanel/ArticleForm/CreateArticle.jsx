@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
+import './create-article.css';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useArticles } from '../../../hooks/useArticles.js';
 import toast from 'react-hot-toast';
 
-const ArticleForm = ({ initialData = {}, onSuccess }) => {
+const CreateArticle = ({ initialData = {}, onSuccess }) => {
     const [title, setTitle] = useState(initialData.title || '');
     const [content, setContent] = useState(initialData.content || '');
     const isEditing = !!initialData._id;
@@ -74,4 +75,4 @@ const ArticleForm = ({ initialData = {}, onSuccess }) => {
     );
 };
 
-export default ArticleForm;
+export default CreateArticle;
