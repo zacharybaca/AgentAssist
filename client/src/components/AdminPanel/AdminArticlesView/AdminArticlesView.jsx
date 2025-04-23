@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import ArticleList from '../../ArticleList/ArticleList.jsx';
 import CreateArticle from '../../AdminPanel/CreateArticle/CreateArticle.jsx';
 
-const AdminArticlesPage = () => {
+const AdminArticlesView = () => {
   const [editingArticle, setEditingArticle] = useState(null);
 
   const handleEdit = (article) => {
@@ -24,4 +24,4 @@ const AdminArticlesPage = () => {
   );
 };
 
-export default AdminArticlesPage;
+export default AdminArticlesView;
