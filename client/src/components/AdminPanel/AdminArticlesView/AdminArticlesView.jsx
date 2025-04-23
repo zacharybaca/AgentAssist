@@ -17,7 +17,7 @@ const AdminArticlesView = () => {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold text-center my-6">Manage Articles</h1>
+      <h1>Manage Articles</h1>
       <CreateArticle initialData={editingArticle} onSuccess={handleSuccess} />
       <ArticleList onEdit={handleEdit} />
     </div>
