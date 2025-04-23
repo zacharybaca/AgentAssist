@@ -6,19 +6,19 @@ export const SignUpProvider = ({ children }) => {
     const [submitting, setSubmitting] = useState(false);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(null);
-
-    const [formData, setFormData] = useState({
-        name: formData.name || '',
-        email: formData.email || '',
-        username: formData.username || '',
-        password: formData.password || '',
-        confirmPassword: formData.confirmPassword || '',
-        role: formData.role || '',
-        avatar: formData.avatar || ''
+    const [agents, setAgents] = useState([]);
+    const [addedAgent, setAddedAgent] = useState({
+        name: addedAgent.name || '',
+        email: addedAgent.email || '',
+        username: addedAgent.username || '',
+        password: addedAgent.password || '',
+        confirmPassword: addedAgent.confirmPassword || '',
+        role: addedAgent.role || '',
+        avatar: addedAgent.avatar || ''
     });
 
     const handleAvatarUpload = (url) => {
-        setFormData(prev => ({
+        setAddedAgent(prev => ({
             ...prev,
             avatar: url
         }));
@@ -26,7 +26,7 @@ export const SignUpProvider = ({ children }) => {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+        setAddedAgent(prev => ({ ...prev, [name]: value }));
     };
 
     const handleSubmit = async (e) => {
@@ -39,13 +39,13 @@ export const SignUpProvider = ({ children }) => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    name: formData.name,
-                    email: formData.email,
-                    username: formData.username,
-                    password: formData.password,
-                    confirmPassword: formData.confirmPassword,
-                    role: formData.role,
-                    avatar: formData.avatar
+                    name: addedAgent.name || '',
+                    email: addedAgent.email || '',
+                    username: addedAgent.username || '',
+                    password: addedAgent.password || '',
+                    confirmPassword: addedAgent.confirmPassword || '',
+                    role: addedAgent.role || '',
+                    avatar: addedAgent.avatar || ''
                 }),
             });
 
@@ -62,9 +62,53 @@ export const SignUpProvider = ({ children }) => {
         }
     };
 
+    const token = localStorage.getItem('token');
+
+    const fetchAgents = async () => {
+        try {
+            const res = await fetch('/api/agents');
+            const data = await res.json();
+            setAgents(data);
+        } catch (err) {
+            console.error('Failed to fetch agents: ', err);
+        }
+    };
+
+    const createAgent = async (agent) => {
+        try {
+            const res = await fetch('/api/agents', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify(agent),
+            });
+
+            if (!res.ok) throw new Error('Creating Agent Failed');
+            const newAgent = await res.json();
+            setAgents((prev) => [...prev, newAgent]);
+            setAddedAgent({
+                name: newAgent.name,
+                email: newAgent.email,
+                username: newAgent.username,
+                password: newAgent.password,
+                confirmPassword: newAgent.confirmPassword,
+                role: newAgent.role,
+                avatar: newAgent.avatar
+            });
+            return newAgent;
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
     return (
         <SignUpContext.Provider value={{
-            formData,
+            agents,
+            addedAgent,
+            fetchAgents,
+            createAgent,
             handleAvatarUpload,
             handleChange,
             handleSubmit,

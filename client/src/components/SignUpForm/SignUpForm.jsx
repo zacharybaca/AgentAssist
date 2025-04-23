@@ -3,7 +3,7 @@ import { useSignUp } from '../../hooks/useSignUp.js';
 import AvatarUpload from '../AvatarUpload/AvatarUpload.jsx';
 
 export default function SignUpForm() {
-    const { formData, handleAvatarUpload, handleChange, handleSubmit, submitting, error, success } = useSignUp();
+    const { agents, addedAgent, fetchAgents, createAgent, handleAvatarUpload, handleChange, handleSubmit, submitting, error, success } = useSignUp();
 
     return (
         <form onSubmit={handleSubmit} id="signUp">
@@ -15,7 +15,7 @@ export default function SignUpForm() {
                 type="text"
                 name="name"
                 placeholder="Full Name"
-                value={formData.name}
+                value={addedAgent.name}
                 onChange={handleChange}
                 required
             />
@@ -26,7 +26,7 @@ export default function SignUpForm() {
                 type="email"
                 name="email"
                 placeholder="Email"
-                value={formData.email}
+                value={addedAgent.email}
                 onChange={handleChange}
                 required
             />
@@ -37,7 +37,7 @@ export default function SignUpForm() {
                 type="text"
                 name="username"
                 placeholder="Username"
-                value={formData.username}
+                value={addedAgent.username}
                 onChange={handleChange}
                 required
             />
@@ -48,7 +48,7 @@ export default function SignUpForm() {
                 type="password"
                 name="password"
                 placeholder="Password"
-                value={formData.password}
+                value={addedAgent.password}
                 onChange={handleChange}
                 required
             />
@@ -59,7 +59,7 @@ export default function SignUpForm() {
                 type="password"
                 name="confirm"
                 placeholder="Confirm Password"
-                value={formData.confirmPassword}
+                value={addedAgent.confirmPassword}
                 onChange={handleChange}
                 required
             />
@@ -75,10 +75,10 @@ export default function SignUpForm() {
 
             <AvatarUpload onUploadComplete={handleAvatarUpload} />
 
-            {formData.avatar && (
+            {addedAgent.avatar && (
                 <div className="text-center">
                     <p>Preview:</p>
-                    <img src={formData.avatar} alt="avatar preview" />
+                    <img src={addedAgent.avatar} alt="avatar preview" />
                 </div>
             )}
 
