@@ -6,16 +6,28 @@ import AvatarEditor from 'react-avatar-editor';
 export default function AvatarUpload({ onUploadComplete }) {
     const [image, setImage] = useState(null);
     const [scale, setScale] = useState(1.2);
+    const [uploading, setUploading] = useState(false);
+    const [error, setError] = useState(null);
     const editorRef = useRef();
 
     const onDrop = useCallback((acceptedFiles) => {
-        setImage(acceptedFiles[0]);
+        const file = acceptedFiles[0];
+        if (!file) return;
+
+        if (!file.type.startsWith('image/')) {
+            setError('Only image files are allowed.');
+            return;
+        }
+        if (file.size > 2 * 1024 * 1024) {
+            setError('Image size must be under 2MB.');
+            return;
+        }
+
+        setImage(file);
+        setError(null);
     }, []);
 
-    const { getRootProps, getInputProps } = useDropzone({
-        accept: { 'image/*': [] },
-        onDrop
-    });
+    const { getRootProps, getInputProps } = useDropzone({ onDrop });
 
     const handleUpload = async () => {
         if (!editorRef.current) return;
@@ -27,19 +39,20 @@ export default function AvatarUpload({ onUploadComplete }) {
         formData.append('avatar', blob, 'avatar.png');
 
         try {
+            setUploading(true);
             const res = await fetch('/api/agents/upload-avatar', {
                 method: 'POST',
                 body: formData,
             });
 
-            if (!res.ok) {
-                throw new Error('Upload failed');
-            }
-
+            if (!res.ok) throw new Error('Upload failed');
             const data = await res.json();
             onUploadComplete(data.avatarUrl);
         } catch (err) {
-            console.error('Upload error:', err);
+            console.error(err);
+            setError('Upload failed.');
+        } finally {
+            setUploading(false);
         }
     };
 
@@ -48,7 +61,7 @@ export default function AvatarUpload({ onUploadComplete }) {
             {!image ? (
                 <div {...getRootProps()}>
                     <input {...getInputProps()} />
-                    <p>Drag and drop or click to upload a profile photo</p>
+                    <p>Click or drag an image</p>
                 </div>
             ) : (
                 <>
@@ -59,9 +72,7 @@ export default function AvatarUpload({ onUploadComplete }) {
                         height={200}
                         border={50}
                         borderRadius={100}
-                        color={[255, 255, 255, 0.6]} // RGBA
                         scale={scale}
-                        rotate={0}
                     />
                     <input
                         type="range"
@@ -71,11 +82,15 @@ export default function AvatarUpload({ onUploadComplete }) {
                         value={scale}
                         onChange={(e) => setScale(parseFloat(e.target.value))}
                     />
-                    <button onClick={handleUpload}>
-                        Upload Avatar
+                    <button
+                        onClick={handleUpload}
+                        disabled={uploading}
+                    >
+                        {uploading ? 'Uploading...' : 'Upload Avatar'}
                     </button>
                 </>
             )}
+            {error && <p>{error}</p>}
         </div>
     );
 }
