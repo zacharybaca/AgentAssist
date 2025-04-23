@@ -45,20 +45,19 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="max-w-3xl mx-auto p-4 bg-white shadow rounded">
-            <div className="mb-4">
-                <label className="block font-semibold mb-1">Article Title</label>
+        <form onSubmit={handleSubmit}>
+            <div>
+                <label>Article Title</label>
                 <input
                     type="text"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
-                    className="w-full border border-gray-300 p-2 rounded"
                     required
                 />
             </div>
 
-            <div className="mb-4">
-                <label className="block font-semibold mb-1">Article Content</label>
+            <div>
+                <label>Article Content</label>
                 <ReactQuill
                     theme="snow"
                     value={content}
@@ -68,7 +67,7 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
                 />
             </div>
 
-            <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">
+            <button type="submit">
                 {isEditing ? 'Update Article' : 'Create Article'}
             </button>
         </form>
