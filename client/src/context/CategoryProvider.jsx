@@ -5,8 +5,8 @@ export const CategoryProvider = ({ children }) => {
     const [categories, setCategories] = useState([]);
 
     const [addedCategory, setAddedCategory] = useState({
-        name: addedCategory.name || '',
-        description: addedCategory.description || ''
+        name: '',
+        description: ''
     });
 
     const [error, setError] = useState(null);
