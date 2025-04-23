@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './article-list.css';
 import { useArticles } from '../../hooks/useArticles.js';
 import ConfirmModal from '../ConfirmModal/ConfirmModal.jsx';
 
@@ -19,22 +20,20 @@ const ArticleList = ({ onEdit }) => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto p-4">
-      <h2 className="text-xl font-semibold mb-4">Articles</h2>
-      <ul className="space-y-4">
+    <div>
+      <h2>Articles</h2>
+      <ul>
         {articles.map((article) => (
-          <li key={article._id} className="bg-white shadow p-4 rounded">
-            <h3 className="text-lg font-bold">{article.title}</h3>
-            <div className="mt-2 flex gap-2">
+          <li key={article._id}>
+            <h3>{article.title}</h3>
+            <div>
               <button
                 onClick={() => onEdit(article)}
-                className="text-sm text-blue-600 hover:underline"
               >
                 Edit
               </button>
               <button
                 onClick={() => handleDeleteClick(article._id)}
-                className="text-sm text-red-600 hover:underline"
               >
                 Delete
               </button>
