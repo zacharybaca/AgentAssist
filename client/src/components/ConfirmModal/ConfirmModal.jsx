@@ -2,7 +2,7 @@
 import React from 'react';
 import './confirm-modal.css';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X } from 'lucide-react'; // You can replace this with any icon
+import { SquareX } from 'lucide-react'; // You can replace this with any icon
 
 const ConfirmModal = ({ isOpen, onCancel, onConfirm, message }) => {
   const handleBackdropClick = (e) => {
@@ -37,7 +37,7 @@ const ConfirmModal = ({ isOpen, onCancel, onConfirm, message }) => {
               <button
                 onClick={onCancel}
               >
-                <X size={20} />
+                <SquareX size={20} />
               </button>
 
               <p>

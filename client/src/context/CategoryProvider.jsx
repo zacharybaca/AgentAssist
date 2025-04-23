@@ -11,6 +11,8 @@ export const CategoryProvider = ({ children }) => {
 
     const [error, setError] = useState(null);
 
+    const [success, setSuccess] = useState(false);
+
     const handleChange = (e) => {
         const { name, value } = e.target;
         setAddedCategory(prev => ({
@@ -73,6 +75,7 @@ export const CategoryProvider = ({ children }) => {
                 name: newCategory.name,
                 description: newCategory.description
             });
+            setSuccess(true);
             return newCategory;
         } catch (err) {
             console.error(err);
@@ -127,6 +130,7 @@ export const CategoryProvider = ({ children }) => {
                 categories,
                 addedCategory,
                 error,
+                success,
                 fetchCategories,
                 createCategory,
                 updateCategory,
