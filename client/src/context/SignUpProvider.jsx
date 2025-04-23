@@ -8,13 +8,13 @@ export const SignUpProvider = ({ children }) => {
     const [error, setError] = useState(null);
     const [agents, setAgents] = useState([]);
     const [addedAgent, setAddedAgent] = useState({
-        name: addedAgent.name || '',
-        email: addedAgent.email || '',
-        username: addedAgent.username || '',
-        password: addedAgent.password || '',
-        confirmPassword: addedAgent.confirmPassword || '',
-        role: addedAgent.role || '',
-        avatar: addedAgent.avatar || ''
+        name: '',
+        email: '',
+        username: '',
+        password: '',
+        confirmPassword: '',
+        role: '',
+        avatar: ''
     });
 
     const handleAvatarUpload = (url) => {
