@@ -2,18 +2,22 @@ import './App.css';
 import { useState, useEffect } from 'react';
 import { useNavigate, Routes, Route } from 'react-router-dom';
 import CreateArticle from "./components/AdminPanel/CreateArticle/CreateArticle.jsx";
+import CreateCategory from "./components/CreateCategory/CreateCategory.jsx";
 import AdminArticlesView from "./components/AdminPanel/AdminArticlesView/AdminArticlesView.jsx";
+import ArticleList from "./components/ArticleList/ArticleList.jsx";
 import { Toaster } from 'react-hot-toast';
 import Logo from './assets/agent-assist-icon-no-background.png';
 import NavBar from './components/NavBar/NavBar.jsx';
 import LoginForm from './components/LoginForm/LoginForm.jsx';
 import SignUpForm from './components/SignUpForm/SignUpForm.jsx';
+import ConfirmModal from './components/ConfirmModal/ConfirmModal.jsx';
 
 function App() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(true);
   const loader = document.getElementById("loader");
   const loaderContainer = document.getElementById("loader-container");
+  const [isModalOpen, setIsModalOpen] = useState(true);
 
   useEffect(() => {
     if (loading && loader && loaderContainer) {
@@ -28,6 +32,11 @@ function App() {
   return (
     !loading && (
       <div id="main-app-container">
+        <ConfirmModal 
+          isOpen={isModalOpen} 
+          onCancel={() => setIsModalOpen(false)}
+          message="Are You Sure You Want to Close This Dialog Box?"
+        />
         <div id="nav-bar-app-container">
           <NavBar />
         </div>
@@ -47,9 +56,13 @@ function App() {
 
           <Route path="/signup" element={<SignUpForm />} />
 
-          <Route path="/admin/article-form" element={<CreateArticle onSuccess={() => {
-            navigate('/articles');
+          <Route path="/articles" element={<ArticleList />} />
+
+          <Route path="/admin/articles/create" element={<CreateArticle onSuccess={() => {
+            navigate('/admin/articles');
           }} />} />
+
+          <Route path="/admin/categories/create" element={<CreateCategory />} />
 
           <Route path="/admin/articles" element={<AdminArticlesView />} />
 
