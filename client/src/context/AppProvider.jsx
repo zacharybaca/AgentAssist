@@ -3,13 +3,13 @@ import { AuthProvider } from './AuthProvider.jsx';
 import { ArticlesProvider } from './ArticlesProvider.jsx';
 import { MenuToggleContextProvider } from './MenuToggleContextProvider.jsx';
 import { SignUpProvider } from './SignUpProvider.jsx';
-import { AgentProvider } from './AgentProvider.jsx';
+import { CategoryProvider } from './CategoryProvider.jsx';
 
 export const AppProviders = ({ children }) => {
     return (
         <Router>
             <MenuToggleContextProvider>
-                <AgentProvider>
+                <CategoryProvider>
                     <SignUpProvider>
                         <AuthProvider>
                             <ArticlesProvider>
@@ -17,7 +17,7 @@ export const AppProviders = ({ children }) => {
                             </ArticlesProvider>
                         </AuthProvider>
                     </SignUpProvider>
-                </AgentProvider>
+                </CategoryProvider>
             </MenuToggleContextProvider>
         </Router>
     )
