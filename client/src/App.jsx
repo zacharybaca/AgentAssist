@@ -1,7 +1,7 @@
 import './App.css';
 import { useState, useEffect } from 'react';
 import { useNavigate, Routes, Route } from 'react-router-dom';
-import ArticleForm from "./components/AdminPanel/ArticleForm/ArticleForm";
+import CreateArticle from "./components/AdminPanel/CreateArticle/CreateArticle.jsx";
 import AdminArticlesView from "./components/AdminPanel/AdminArticlesView/AdminArticlesView.jsx";
 import { Toaster } from 'react-hot-toast';
 import Logo from './assets/agent-assist-icon-no-background.png';
@@ -47,7 +47,7 @@ function App() {
 
           <Route path="/signup" element={<SignUpForm />} />
 
-          <Route path="/admin/article-form" element={<ArticleForm onSuccess={() => {
+          <Route path="/admin/article-form" element={<CreateArticle onSuccess={() => {
             navigate('/articles');
           }} />} />
 
