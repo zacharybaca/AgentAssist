@@ -32,9 +32,11 @@ function App() {
   return (
     !loading && (
       <div id="main-app-container">
-        <ConfirmModal 
-          isOpen={isModalOpen} 
+        <ConfirmModal
+          isOpen={isModalOpen}
           onCancel={() => setIsModalOpen(false)}
+          rejectButton="No"
+          confirmButton="Yes"
           message="Are You Sure You Want to Close This Dialog Box?"
         />
         <div id="nav-bar-app-container">
