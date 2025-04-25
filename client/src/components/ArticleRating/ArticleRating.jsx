@@ -30,19 +30,21 @@ const ArticleRating = () => {
 
       return (
         <div className="rating-container">
-          {[1, 2, 3, 4, 5].map((index) => (
-            <span
-              key={index}
-              onClick={() => !hasVoted && handleStarClick(index)}
-              style={{ cursor: hasVoted ? 'default' : 'pointer' }}
-            >
-              {index <= rating ? (
-                <Star fill="gold" strokeWidth={0} />
-              ) : (
-                <Star strokeWidth={1} />
-              )}
-            </span>
-          ))}
+          <p>
+            {[1, 2, 3, 4, 5].map((index) => (
+                <span
+                key={index}
+                onClick={() => !hasVoted && handleStarClick(index)}
+                style={{ cursor: hasVoted ? 'default' : 'pointer' }}
+                >
+                {index <= rating ? (
+                    <Star fill="gold" strokeWidth={0} />
+                ) : (
+                    <Star strokeWidth={1} />
+                )}
+                </span>
+            ))}
+          </p>
           <p>Rating: {userStarRatingArray.map((index) => (
             <span
                 key={index}
