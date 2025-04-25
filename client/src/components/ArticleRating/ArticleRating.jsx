@@ -30,7 +30,9 @@ const ArticleRating = () => {
 
       return (
         <div className="rating-container">
+          <h1>Rate This Article</h1>
           <p>
+            Your Rating:
             {[1, 2, 3, 4, 5].map((index) => (
                 <span
                 key={index}
