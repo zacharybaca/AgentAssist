@@ -11,6 +11,7 @@ import NavBar from './components/NavBar/NavBar.jsx';
 import LoginForm from './components/LoginForm/LoginForm.jsx';
 import SignUpForm from './components/SignUpForm/SignUpForm.jsx';
 import ConfirmModal from './components/ConfirmModal/ConfirmModal.jsx';
+import ArticleRating from './components/ArticleRating/ArticleRating.jsx';
 
 function App() {
   const navigate = useNavigate();
@@ -48,6 +49,8 @@ function App() {
           <h1>☎️"Answers at the speed of your next call"☎️</h1>
         </div>
 
+        <ArticleRating />
+        
         <Routes>
 
           <Route path="/" element={
