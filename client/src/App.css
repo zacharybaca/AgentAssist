@@ -16,12 +16,14 @@
 #main-app-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
 }
 
 #nav-bar-app-container {
   display: flex;
   justify-content: flex-end;
+  margin-left: auto;
   padding-bottom: 10px;
 }
 
