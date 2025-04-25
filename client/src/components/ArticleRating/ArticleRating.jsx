@@ -1,22 +1,33 @@
 import './article-rating.css';
+import { useState } from 'react';
 import { Star, StarHalf } from "lucide-react";
 
 const ArticleRating = () => {
+    
+    const [rating, setRating] = useState(0);
 
-    return (
+    const handleStarClick = (selectedRating) => {
+        setRating(selectedRating);
+      };
+
+      return (
         <div className="rating-container">
-            <div className="stars-container">
-                { Array.from({ length: 5 }, () => (
-                <Star fill="#111" strokeWidth={0} />
-                ))}
-            </div>
-            <div className="stars rating">
-                <Star fill="yellow" strokeWidth={0} />
-                <Star fill="yellow" strokeWidth={0} />
-                <StarHalf fill="yellow" strokeWidth={0} />
-            </div>
+          {[1, 2, 3, 4, 5].map((index) => (
+            <span
+              key={index}
+              onClick={() => handleStarClick(index)}
+              style={{ cursor: 'pointer' }}
+            >
+              {index <= rating ? (
+                <Star fill="gold" strokeWidth={0} />
+              ) : (
+                <Star strokeWidth={1} />
+              )}
+            </span>
+          ))}
+          <p>Rating: {rating}</p>
         </div>
-    )
+      );
 }
 
 export default ArticleRating;
