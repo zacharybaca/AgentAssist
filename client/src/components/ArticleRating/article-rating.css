@@ -11,3 +11,7 @@
     position: absolute;
     top: 0;
   }
+
+  .rating-container {
+    border: 3px solid black;
+  }
