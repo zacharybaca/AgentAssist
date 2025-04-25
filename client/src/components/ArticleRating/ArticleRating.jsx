@@ -33,8 +33,8 @@ const ArticleRating = () => {
           {[1, 2, 3, 4, 5].map((index) => (
             <span
               key={index}
-              onClick={() => handleStarClick(index)}
-              style={{ cursor: 'pointer' }}
+              onClick={() => !hasVoted && handleStarClick(index)}
+              style={{ cursor: hasVoted ? 'default' : 'pointer' }}
             >
               {index <= rating ? (
                 <Star fill="gold" strokeWidth={0} />
