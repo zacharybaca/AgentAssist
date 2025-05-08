@@ -1,7 +1,8 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useRef } from 'react';
 import './confirm-modal.css';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'motion/react';
+import { AnimatePresence } from 'framer-motion';
 import { SquareX } from 'lucide-react';
 
 const ConfirmModal = ({ isOpen, onCancel, onConfirm, confirmButton, rejectButton, message }) => {
