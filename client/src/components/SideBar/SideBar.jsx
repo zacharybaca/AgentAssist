@@ -2,10 +2,13 @@
 import './side-bar.css';
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, Reorder } from "motion/react"
+import { AnimatePresence } from 'framer-motion';
 import { FileHeart, Newspaper, UserCog } from 'lucide-react';
 
 const Sidebar = ({ isOpen, close }) => {
+    const [items, setItems] = React.useState([0,1,2,3,4,5,6]);
+
     return (
         <AnimatePresence>
             {isOpen && (
@@ -23,8 +26,16 @@ const Sidebar = ({ isOpen, close }) => {
                         initial={{ x: '-100%' }}
                         animate={{ x: 0 }}
                         exit={{ x: '-100%' }}
-                        transition={{ type: 'tween' }}
+                        transition={{ type: 'spring', bounce: 0.50 }}
                     >
+                        <Reorder.Group axis="y" values={items} onReorder={setItems}>
+                            {items.map((item) => (
+                                <Reorder.Item key={item} value={item}>
+                                    {item}
+                                </Reorder.Item>
+                            ))}
+                        </Reorder.Group>
+                        
                         <ul>
                             <li>
                                 <Link>
