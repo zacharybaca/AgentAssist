@@ -1,13 +1,40 @@
 /* eslint-disable no-unused-vars */
 import './side-bar.css';
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { motion, Reorder } from "motion/react"
+import { motion, Reorder } from "motion/react";
 import { AnimatePresence } from 'framer-motion';
 import { FileHeart, Newspaper, UserCog } from 'lucide-react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Sidebar = ({ isOpen, close }) => {
-    const [items, setItems] = React.useState([0,1,2,3,4,5,6]);
+    const navigate = useNavigate(); // Get the navigate function
+
+    const [items, setItems] = React.useState([
+        {
+            icon: Newspaper,
+            size: 35,
+            title: "Articles",
+            path: "/articles"
+        },
+        {
+            icon: FileHeart,
+            size: 35,
+            title: "My Favorite Articles",
+            path: "/favorites"
+        },
+        {
+            icon: UserCog,
+            size: 35,
+            title: "Agent Settings",
+            path: "/settings"
+        }
+    ]);
+
+    const handleItemClick = (path) => {
+        if (path) {
+            navigate(path);
+        }
+    };
 
     return (
         <AnimatePresence>
@@ -29,30 +56,19 @@ const Sidebar = ({ isOpen, close }) => {
                         transition={{ type: 'spring', bounce: 0.50 }}
                     >
                         <Reorder.Group axis="y" values={items} onReorder={setItems}>
-                            {items.map((item) => (
-                                <Reorder.Item key={item} value={item}>
-                                    {item}
-                                </Reorder.Item>
-                            ))}
+                            <ul>
+                                {items.map(item => (
+                                    <Reorder.Item key={item.title} value={item}>
+                                        <li onClick={() => handleItemClick(item.path)} style={{ cursor: 'pointer' }}>
+                                            <div>
+                                                <item.icon size={item.size} />
+                                                <h3>{item.title}</h3>
+                                            </div>
+                                        </li>
+                                    </Reorder.Item>
+                                ))}
+                            </ul>
                         </Reorder.Group>
-                        
-                        <ul>
-                            <li>
-                                <Link>
-                                    <Newspaper size={35} /> <h3>Articles</h3>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link>
-                                    <FileHeart size={35} /> <h3>My Favorite Articles</h3>
-                                </Link>
-                            </li>
-                            <li>
-                                <Link>
-                                    <UserCog size={35} /> <h3>Agent Settings</h3>
-                                </Link>
-                            </li>
-                        </ul>
                     </motion.div>
                 </>
             )}
