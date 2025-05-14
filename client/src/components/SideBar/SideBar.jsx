@@ -3,7 +3,15 @@ import "./side-bar.css";
 import React from "react";
 import { motion, Reorder } from "motion/react";
 import { AnimatePresence } from "framer-motion";
-import { FileHeart, Newspaper, UserCog, SquareCheck, Lock, Mail, CalendarSync } from "lucide-react";
+import {
+  FileHeart,
+  Newspaper,
+  UserCog,
+  SquareCheck,
+  Lock,
+  Mail,
+  CalendarSync,
+} from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const iconMap = {
@@ -19,20 +27,33 @@ const iconMap = {
 const Sidebar = ({ isOpen, close }) => {
   const navigate = useNavigate();
 
-  const defaultItems = [
-    { icon: "Newspaper", size: 35, title: "Articles", path: "/articles" },
-    {
-      icon: "FileHeart",
-      size: 35,
-      title: "My Favorite Articles",
-      path: "/favorites",
-    },
-    { icon: "UserCog", size: 35, title: "Agent Settings", path: "/settings" },
-    { icon: "SquareCheck", size: 35, title: "My Tasks", path: "/tasks" },
-    { icon: "Lock", size: 35, title: "Admin Panel", path: "/admin-panel" },
-    { icon: "Mail", size: 35, title: "E-Mail Templates", path: "/email-templates" },
-    { icon: "CalendarSync", size: 35, title: "My Schedule", path: "/my-schedule" },
-  ];
+  const defaultItems = React.useMemo(
+    () => [
+      { icon: "Newspaper", size: 35, title: "Articles", path: "/articles" },
+      {
+        icon: "FileHeart",
+        size: 35,
+        title: "My Favorite Articles",
+        path: "/favorites",
+      },
+      { icon: "UserCog", size: 35, title: "Agent Settings", path: "/settings" },
+      { icon: "SquareCheck", size: 35, title: "My Tasks", path: "/tasks" },
+      { icon: "Lock", size: 35, title: "Admin Panel", path: "/admin-panel" },
+      {
+        icon: "Mail",
+        size: 35,
+        title: "E-Mail Templates",
+        path: "/email-templates",
+      },
+      {
+        icon: "CalendarSync",
+        size: 35,
+        title: "My Schedule",
+        path: "/my-schedule",
+      },
+    ],
+    []
+  );
 
   const [items, setItems] = React.useState(() => {
     const saved = localStorage.getItem("sidebarItems");
