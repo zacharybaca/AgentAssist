@@ -19,6 +19,14 @@
   border: 2px solid black;
 }
 
+#login-form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+}
+
 #login-form button {
   display: flex;
   justify-content: center;
