@@ -26,13 +26,15 @@ const LoginForm = () => {
   };
 
   return (
-    <form id="login-form" onSubmit={handleSubmit}>
-      {error && <p>{error}</p>}
-      <h1>Helping You Help Them — Sign In to AgentAssist</h1>
-      <input name="username" onChange={handleChange} placeholder="Username" />
-      <input name="password" type="password" onChange={handleChange} placeholder="Password" />
-      <button type="submit"><LogIn size={25}/> Login</button>
-    </form>
+    <div id="login-form-container">
+       <form id="login-form" onSubmit={handleSubmit}>
+        {error && <p>{error}</p>}
+        <h1>Helping You Help Them — Sign In to AgentAssist</h1>
+        <input name="username" onChange={handleChange} placeholder="Username" />
+        <input name="password" type="password" onChange={handleChange} placeholder="Password" />
+        <button type="submit"><LogIn size={25}/> Login</button>
+      </form>
+    </div>
   );
 };
 
