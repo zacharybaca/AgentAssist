@@ -1,34 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400..700&display=swap");
 
 #login-form {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    min-width: 50%;
-    max-width: 50%;
-    min-height: 25vh;
-    max-height: 25vh;
-    gap: 10px;
-    font-family: "Markazi Text", serif;
-    font-optical-sizing: auto;
-    font-weight: 800;
-    font-style: normal;
-    background-color: #E8E8E8;
-    border-radius: 10px;
-    border: 2px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 50%;
+  max-width: 50%;
+  min-height: 25vh;
+  max-height: 25vh;
+  gap: 10px;
+  font-family: "Markazi Text", serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  background-color: #e8e8e8;
+  border-radius: 10px;
+  border: 2px solid black;
 }
 
 #login-form button {
-    font-size: 1.75rem;
-    font-family: "Markazi Text", serif;
-    font-optical-sizing: auto;
-    font-weight: 800;
-    font-style: normal;
-    max-width: 30%;
-    min-width: 30%;
-    min-height: fit-content;
-    max-height: fit-content;
-    border-radius: 10px;
-    border: 3px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.75rem;
+  font-family: "Markazi Text", serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  max-width: 30%;
+  min-width: 30%;
+  min-height: fit-content;
+  max-height: fit-content;
+  border-radius: 10px;
+  border: 3px solid black;
+}
+
+#login-form button:hover {
+  background-color: blue;
+  color: white;
+  border: 3px solid blue;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  transform: scale(1.05);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }

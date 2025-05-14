@@ -1,25 +1,25 @@
 .star-rating {
-    position: relative;
-  }
-  
-  .stars {
-    display: flex;
-    gap: 4px;
-  }
-  
-  .rating {
-    position: absolute;
-    top: 0;
-  }
+  position: relative;
+}
 
-  .rating-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    gap: 10px;
-    min-width: 50%;
-    max-width: 50%;
-    background-color: #E8E8E8;
-    border: 3px solid black;
-  }
+.stars {
+  display: flex;
+  gap: 4px;
+}
+
+.rating {
+  position: absolute;
+  top: 0;
+}
+
+.rating-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-width: 50%;
+  max-width: 50%;
+  background-color: #e8e8e8;
+  border: 3px solid black;
+}
