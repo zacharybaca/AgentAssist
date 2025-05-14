@@ -3,7 +3,7 @@ import "./side-bar.css";
 import React from "react";
 import { motion, Reorder } from "motion/react";
 import { AnimatePresence } from "framer-motion";
-import { FileHeart, Newspaper, UserCog, SquareCheck, Lock, Mail } from "lucide-react";
+import { FileHeart, Newspaper, UserCog, SquareCheck, Lock, Mail, CalendarSync } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const iconMap = {
@@ -12,7 +12,8 @@ const iconMap = {
   UserCog,
   SquareCheck,
   Lock,
-  Mail
+  Mail,
+  CalendarSync,
 };
 
 const Sidebar = ({ isOpen, close }) => {
@@ -29,7 +30,8 @@ const Sidebar = ({ isOpen, close }) => {
     { icon: "UserCog", size: 35, title: "Agent Settings", path: "/settings" },
     { icon: "SquareCheck", size: 35, title: "My Tasks", path: "/tasks" },
     { icon: "Lock", size: 35, title: "Admin Panel", path: "/admin-panel" },
-    { icon: "Mail", size: 35, title: "E-Mail Templates", path: "/email-templates"},
+    { icon: "Mail", size: 35, title: "E-Mail Templates", path: "/email-templates" },
+    { icon: "CalendarSync", size: 35, title: "My Schedule", path: "/my-schedule" },
   ];
 
   const [items, setItems] = React.useState(() => {
