@@ -8,7 +8,7 @@ const Navbar = () => {
 
     return (
         <div id="nav-main-container">
-            <nav id="nav-container">
+            <nav>
                 <MenuToggle isOpen={menuOpen} toggle={toggleMenu} />
             </nav>
 
