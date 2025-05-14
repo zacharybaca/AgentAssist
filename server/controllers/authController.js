@@ -16,7 +16,7 @@ export const register = async (req, res) => {
     if (!name || !username || !email || !password || !role) {
       return res.status(403).json({ message: "Please provide required data for all required fields"});
     }
-    
+
     await newUser.save();
 
     res.status(201).json({ message: "Account created successfully." });
@@ -41,7 +41,7 @@ export const login = async (req, res) => {
 
     // Sign JWT
     const token = jwt.sign(
-      { userId: user._id, role: user.role },
+      { userId: user._id, username: user.username, role: user.role },
       process.env.SECRET,
       { expiresIn: "8h" }
     );
