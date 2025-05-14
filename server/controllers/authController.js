@@ -77,3 +77,11 @@ export const login = async (req, res) => {
     res.status(500).json({ message: "Server error during login." });
   }
 };
+
+export const logout = async (req, res) => {
+  const token = localStorage.getItem("token");
+
+  if (!token) return res.status(500).json({ message: "There is no current user logged-in  "});
+
+  res.status(204);
+};
