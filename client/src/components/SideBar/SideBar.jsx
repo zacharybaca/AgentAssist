@@ -78,13 +78,13 @@ const Sidebar = ({ isOpen, close }) => {
           />
 
           <motion.div
-            initial={{ x: "-100%" }}
-            animate={{ x: 0 }}
-            exit={{ x: "-100%" }}
+            initial={{ y: "-100%" }}
+            animate={{ y: 0 }}
+            exit={{ y: "-100%" }}
             transition={{ type: "spring", bounce: 0.5 }}
           >
-            <Reorder.Group axis="y" values={items} onReorder={setItems}>
-              <ul>
+            <Reorder.Group axis="x" values={items} onReorder={setItems}>
+              <ul id="menu-icon-list">
                 {items.map((item) => (
                   <Reorder.Item key={item.title} value={item}>
                     <li
