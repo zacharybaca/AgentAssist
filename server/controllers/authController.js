@@ -81,7 +81,7 @@ export const login = async (req, res) => {
 export const logout = async (req, res) => {
   const token = localStorage.getItem("token");
 
-  if (!token) return res.status(500).json({ message: "There is no current user logged-in  "});
+  if (!token) return res.status(204);
 
-  res.status(204);
+  res.status(200).json({ message: "You have successfully been logged out." });
 };
