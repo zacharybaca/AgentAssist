@@ -3,13 +3,16 @@ import "./side-bar.css";
 import React from "react";
 import { motion, Reorder } from "motion/react";
 import { AnimatePresence } from "framer-motion";
-import { FileHeart, Newspaper, UserCog } from "lucide-react";
+import { FileHeart, Newspaper, UserCog, SquareCheck, Lock, Mail } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const iconMap = {
   Newspaper,
   FileHeart,
   UserCog,
+  SquareCheck,
+  Lock,
+  Mail
 };
 
 const Sidebar = ({ isOpen, close }) => {
@@ -24,6 +27,9 @@ const Sidebar = ({ isOpen, close }) => {
       path: "/favorites",
     },
     { icon: "UserCog", size: 35, title: "Agent Settings", path: "/settings" },
+    { icon: "SquareCheck", size: 35, title: "My Tasks", path: "/tasks" },
+    { icon: "Lock", size: 35, title: "Admin Panel", path: "/admin-panel" },
+    { icon: "Mail", size: 35, title: "E-Mail Templates", path: "/email-templates"},
   ];
 
   const [items, setItems] = React.useState(() => {
@@ -52,7 +58,7 @@ const Sidebar = ({ isOpen, close }) => {
       icon: Object.keys(iconMap).find((key) => iconMap[key] === icon),
     }));
     localStorage.setItem("sidebarItems", JSON.stringify(itemsToSave));
-  }, [items]);
+  }, [items, defaultItems]);
 
   const handleItemClick = (path) => {
     if (path) navigate(path);
