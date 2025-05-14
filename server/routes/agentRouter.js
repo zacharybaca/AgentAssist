@@ -6,11 +6,21 @@ import {
   uploadAgentAvatar,
   updateAgent,
   deleteAgent,
+  toggleFavoriteArticle,
+  getUserFavoriteArticles,
 } from "../controllers/agentController.js";
 
 import { authenticateToken, requireAdmin } from "../middleware/auth.js";
 
 const router = express.Router();
+
+// User Protected Routes
+router.put(
+  "/favorite-articles/:articleId/toggle",
+  requireAuth,
+  toggleFavoriteArticle
+);
+router.get("/favorite-articles/:agentId", requireAuth, getUserFavoriteArticles);
 
 // Admin-only Accessible Routes
 router.get("/", authenticateToken, requireAdmin, getAllAgents);

@@ -19,3 +19,18 @@ export const requireAdmin = (req, res, next) => {
   if (req.user?.role !== "admin") return res.sendStatus(403);
   next();
 };
+
+export const requireManager = (req, res, next) => {
+  if (req.user?.role !== "manager") return res.sendStatus(403);
+  next();
+};
+
+export const requireSuperVisor = (req, res, next) => {
+  if (req.user?.role !== "supervisor") return res.sendStatus(403);
+  next();
+};
+
+export const requireAgent = (req, res, next) => {
+  if (req.user?.role !== "agent") return res.sendStatus(403);
+  next();
+};

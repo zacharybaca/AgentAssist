@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 const agentSchema = new mongoose.Schema({
   name: { type: String, required: true },
   username: { type: String, required: true, unique: true },
-  email: { type: String, unique: true },
+  email: { type: String, unique: true, required: true },
   password: { type: String, required: true },
   role: {
     type: String,
@@ -13,6 +13,12 @@ const agentSchema = new mongoose.Schema({
     default: "agent",
     required: true,
   },
+  favoriteArticles: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Article",
+    },
+  ],
   avatar: { type: String },
 });
 

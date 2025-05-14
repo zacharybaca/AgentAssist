@@ -75,3 +75,45 @@ export const deleteAgent = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+export const toggleFavoriteArticle = async (req, res) => {
+  try {
+    const agentId = req.user._id;
+    const articleId = req.params.articleId;
+
+    const agent = await Agent.findById(agentId);
+
+    if (!agent) return res.status(404).json({ message: "Agent not found" });
+
+    const index = agent.favoriteArticles.indexOf(articleId);
+
+    if (index === -1) {
+      // Add to favorites
+      agent.favoriteArticles.push(articleId);
+    } else {
+      // Remove from favorites
+      agent.favoriteArticles.splice(index, 1);
+    }
+
+    const updated = await agent.save();
+
+    await updated.populate("favoriteArticles"); // Populate with full article data
+
+    res.status(200).json(updated);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
+export const getUserFavoriteArticles = async (req, res) => {
+  try {
+    const agent = await Agent.findById(req.user._id).populate(
+      "favoriteArticles"
+    );
+    if (!agent) return res.status(404).json({ message: "Agent not found" });
+
+    res.status(200).json(agent.favoriteArticles);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
