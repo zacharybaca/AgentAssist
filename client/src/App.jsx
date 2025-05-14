@@ -54,9 +54,7 @@ function App() {
         <Routes>
 
           <Route path="/" element={
-            <div id="login-form-container">
               <LoginForm />
-            </div>
           } />
 
           <Route path="/signup" element={<SignUpForm />} />
