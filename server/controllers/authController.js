@@ -21,7 +21,7 @@ export const registerAdmin = async (req, res) => {
   }
 };
 
-export const loginAdmin = async (req, res) => {
+export const login = async (req, res) => {
   const { username, password } = req.body;
 
   try {
