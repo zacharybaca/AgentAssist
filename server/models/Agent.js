@@ -10,6 +10,17 @@ const agentSchema = new mongoose.Schema({
       validator: validator.isEmail,
       message: "Please enter a valid email address",
     }, },
+  phoneNumber: {
+    type: String,
+    required: false,
+    validate: {
+      validator: (value) => {
+        if (!value) return true;
+        return validator.isMobilePhone(value, 'en-US');
+      },
+    message: "Please enter a valid mobile phone number",
+    },
+  },
   password: { type: String, required: true },
   role: {
     type: String,
