@@ -12,6 +12,7 @@ import LoginForm from './components/LoginForm/LoginForm.jsx';
 import SignUpForm from './components/SignUpForm/SignUpForm.jsx';
 import ConfirmModal from './components/ConfirmModal/ConfirmModal.jsx';
 import ArticleRating from './components/ArticleRating/ArticleRating.jsx';
+import AdminPanel from './components/AdminPanel/AdminPanel.jsx';
 
 function App() {
   const navigate = useNavigate();
@@ -50,6 +51,7 @@ function App() {
         </div>
 
         <ArticleRating />
+        <AdminPanel />
         
         <Routes>
 
@@ -68,6 +70,8 @@ function App() {
           <Route path="/admin/categories/create" element={<CreateCategory />} />
 
           <Route path="/admin/articles" element={<AdminArticlesView />} />
+
+          <Route path="/admin/admin-panel" element={<AdminPanel />} />
 
         </Routes>
       </div>
