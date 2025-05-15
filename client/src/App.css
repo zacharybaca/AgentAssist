@@ -5,10 +5,9 @@
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-  min-height: 100vh;
-  max-height: 100vh;
-  min-width: 100vw;
-  max-width: 100vw;
+  min-height: 99vh;
+  min-width: 100%;
+  max-width: 100%;
   border: 3px solid yellow;
 }
 
@@ -23,7 +22,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 50px;
+  gap: 30px;
   background-color: #E8E8E8;
   box-sizing: border-box;
   border-radius: 10px;
