@@ -49,9 +49,6 @@ function App() {
           <img src={Logo} alt="logo" />
           <h1>☎️"Answers at the speed of your next call"☎️</h1>
         </div>
-
-        <ArticleRating />
-        <AdminPanel />
         
         <Routes>
 
@@ -62,6 +59,8 @@ function App() {
           <Route path="/signup" element={<SignUpForm />} />
 
           <Route path="/articles" element={<ArticleList />} />
+
+          <Route path="/articles/article-rating/:id" element={<ArticleRating />} />
 
           <Route path="/admin/articles/create" element={<CreateArticle onSuccess={() => {
             navigate('/admin/articles');
