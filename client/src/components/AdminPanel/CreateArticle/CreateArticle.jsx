@@ -16,6 +16,9 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
 
     const { createArticle, updateArticle } = useArticles();
 
+    const cloudName = import.meta.env.VITE_CLOUD_NAME;
+    const cloudPresetName = import.meta.env.VITE_PRESET_NAME;
+
     useEffect(() => {
         const text = content.replace(/<[^>]+>/g, ''); // remove HTML tags
         setWordCount(text.trim().split(/\s+/).filter(Boolean).length);
@@ -27,24 +30,25 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
         }
     }, [title, content, status, tags]);
 
-    const handleImageUpload = () => {
-        const input = document.createElement('input');
-        input.setAttribute('type', 'file');
-        input.setAttribute('accept', 'image/*');
-        input.click();
-        input.onchange = async () => {
-            const file = input.files[0];
-            if (/^image\//.test(file.type)) {
-                const reader = new FileReader();
-                reader.onload = () => {
-                    const quill = document.querySelector('.ql-editor');
-                    const range = quill.getSelection?.();
-                    const editor = quill.__quill; // Access Quill instance
-                    editor.insertEmbed(range ? range.index : 0, 'image', reader.result);
-                };
-                reader.readAsDataURL(file);
-            }
-        };
+    const handleImageUpload = async (file) => {
+        const formData = new FormData();
+        formData.append('file', file);
+        formData.append('upload_preset', cloudPresetName); // your unsigned presename
+        formData.append('cloud_name', cloudName); // replace with your cloud name
+
+        try {
+            const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/   image/upload`, {
+            method: 'POST',
+            body: formData,
+            });
+
+            const data = await res.json();
+            return data.secure_url;
+        }       catch (error) {
+            console.error('Cloudinary upload failed:', error);
+            toast.error('Image upload failed');
+            return null;
+        }
     };
 
     const toolbarOptions = [
@@ -59,10 +63,23 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
         toolbar: {
             container: toolbarOptions,
             handlers: {
-                image: handleImageUpload,
+                image: () => {
+                const input = document.createElement('input');
+                input.setAttribute('type', 'file');
+                input.setAttribute('accept', 'image/*');
+                input.click();
+
+                input.onchange = async () => {
+                    const file = input.files[0];
+                    const url = await handleImageUpload(file);
+                    if (url) {
+                        const range = quillRef.current.getEditor().getSelection();
+                        quillRef.current.getEditor().insertEmbed(range.index, 'image', url);
+                    }
+                }
             },
         },
-    };
+    }};
 
     const handleSubmit = async (e) => {
         e.preventDefault();
