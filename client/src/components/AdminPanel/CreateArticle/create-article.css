@@ -23,6 +23,7 @@ label {
 }
 
 input[type="text"],
+input[type="image"],
 select {
     width: 100%;
     padding: 0.6rem;
@@ -36,6 +37,14 @@ select {
 }
 
 .info-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.5rem;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.upload-image-row {
     display: flex;
     justify-content: space-between;
     margin-top: 0.5rem;
