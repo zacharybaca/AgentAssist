@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import './menu-toggle.css';
-import { Menu, PhoneOff, PhoneIcon } from 'lucide-react';
+import { PhoneOff, PhoneIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const MenuToggle = ({ isOpen, toggle }) => {
@@ -23,7 +23,6 @@ const MenuToggle = ({ isOpen, toggle }) => {
                         <PhoneOff />
                     ) : (
                         <>
-                            <Menu />
                             <PhoneIcon />
                         </>
                     )}
