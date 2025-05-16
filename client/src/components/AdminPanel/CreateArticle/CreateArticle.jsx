@@ -176,9 +176,14 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
                 {lastEdited && <small>Last edited: {lastEdited}</small>}
             </div>
 
-            <div>
-                <label>Upload an Image</label>
-                <input type="file" accept="image/*" onChange={handleFileChange}/>
+            <div className="upload-wrapper">
+                <label htmlFor="imageUpload">Upload an Image</label>
+                <input
+                    id="imageUpload"
+                    type="file"
+                    accept="image/*"
+                    onChange={handleFileChange} // or inline if you prefer
+                />
             </div>
 
             <div className="button-row">
