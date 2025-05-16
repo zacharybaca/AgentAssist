@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './create-article.css';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
@@ -18,6 +18,7 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
 
     const cloudName = import.meta.env.VITE_CLOUD_NAME;
     const cloudPresetName = import.meta.env.VITE_PRESET_NAME;
+    const quillRef = useRef(null);
 
     useEffect(() => {
         const text = content.replace(/<[^>]+>/g, ''); // remove HTML tags
@@ -37,7 +38,8 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
         formData.append('cloud_name', cloudName); // replace with your cloud name
 
         try {
-            const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/   image/upload`, {
+            const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`
+, {
             method: 'POST',
             body: formData,
             });
@@ -49,6 +51,16 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
             toast.error('Image upload failed');
             return null;
         }
+    };
+
+    const handleFileChange = async (e) => {
+        const file = e.target.files[0];
+        if (!file) return;
+        const url = await handleImageUpload(file);
+        const editor = quillRef.current.getEditor();
+        const range = editor.getSelection(true);
+        editor.insertEmbed(range?.index ?? editor.getLength(), 'image', url);
+        toast.success('Image added to content!');
     };
 
     const toolbarOptions = [
@@ -150,6 +162,7 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
             <div>
                 <label>Article Content</label>
                 <ReactQuill
+                    ref={quillRef}
                     theme="snow"
                     value={content}
                     onChange={setContent}
@@ -161,6 +174,11 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
             <div className="info-row">
                 <small>{wordCount} words</small>
                 {lastEdited && <small>Last edited: {lastEdited}</small>}
+            </div>
+
+            <div>
+                <label>Upload an Image</label>
+                <input type="file" accept="image/*" onChange={handleFileChange}/>
             </div>
 
             <div className="button-row">
