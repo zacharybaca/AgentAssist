@@ -6,19 +6,24 @@ import validator from "validator";
 const agentSchema = new mongoose.Schema({
   name: { type: String, required: true },
   username: { type: String, required: true, unique: true },
-  email: { type: String, unique: true, required: true, validate: {
+  email: {
+    type: String,
+    unique: true,
+    required: true,
+    validate: {
       validator: validator.isEmail,
       message: "Please enter a valid email address",
-    }, },
+    },
+  },
   phoneNumber: {
     type: String,
     required: false,
     validate: {
       validator: (value) => {
         if (!value) return true;
-        return validator.isMobilePhone(value, 'en-US');
+        return validator.isMobilePhone(value, "en-US");
       },
-    message: "Please enter a valid mobile phone number",
+      message: "Please enter a valid mobile phone number",
     },
   },
   password: { type: String, required: true },
@@ -32,6 +37,12 @@ const agentSchema = new mongoose.Schema({
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "Article",
+    },
+  ],
+  tasks: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Task",
     },
   ],
   avatar: { type: String },
