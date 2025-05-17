@@ -1,16 +1,13 @@
-#root {
-  text-align: center;
-  background-image: url('./assets/agent-assist-background-image.png');
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+/* ================================
+   Base Reset + Accessibility
+================================= */
+
+*,
+*::before,
+*::after {
   box-sizing: border-box;
-  min-height: 99vh;
-  min-width: 100%;
-  max-width: 100%;
-  border: 3px dotted green;
 }
 
-/* Remove default margin */
 body,
 h1,
 h2,
@@ -24,38 +21,33 @@ dd {
   margin: 0;
 }
 
-/* Remove list styles on ul, ol elements with a list role, which suggests default styling will be removed */
 ul[role="list"],
 ol[role="list"] {
   list-style: none;
 }
 
-/* Set core root defaults */
 html:focus-within {
   scroll-behavior: smooth;
 }
 
-/* Set core body defaults */
 body {
   min-height: 100vh;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  cursor: url('./assets/cursor.png'), pointer;
+  cursor: url("./assets/cursor.png"), pointer;
+  font-family: sans-serif;
 }
 
-/* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
 }
 
-/* Make images easier to work with */
 img,
 picture {
   max-width: 100%;
   display: block;
 }
 
-/* Inherit fonts for inputs and buttons */
 input,
 button,
 textarea,
@@ -63,15 +55,200 @@ select {
   font: inherit;
 }
 
-button:hover, a:hover {
-  cursor: url('./assets/pointer.png'), pointer;
+button:hover,
+a:hover {
+  cursor: url("./assets/pointer.png"), pointer;
 }
 
-/* Remove all animations and transitions for people that prefer not to see them */
+/* ================================
+   Root + Background
+================================= */
+
+#root {
+  text-align: center;
+  background-image: url("./assets/agent-assist-background-image.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  width: 100%;
+  max-width: 100%;
+  padding: 1rem;
+  overflow-x: hidden;
+  border: 3px dotted green;
+}
+
+/* ================================
+   Layout Utilities
+================================= */
+
+.container {
+  padding: 1rem;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 100%;
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 700px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+/* Flex/grid helpers */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.center {
+  justify-content: center;
+  align-items: center;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.gap-1 {
+  gap: 1rem;
+}
+
+/* Responsive helpers */
+@media (max-width: 768px) {
+  .flex-row {
+    flex-direction: column;
+  }
+}
+
+.mobile-only {
+  display: block;
+}
+
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+
+  .desktop-only {
+    display: block;
+  }
+}
+
+/* Typography Scaling */
+html {
+  font-size: 16px;
+}
+
+@media (max-width: 600px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+h1 {
+  font-size: clamp(1.5rem, 5vw, 2.5rem);
+}
+
+p {
+  font-size: clamp(1rem, 3vw, 1.25rem);
+}
+
+/* ================================
+   Mobile Nav
+================================= */
+
+.navbar {
+  width: 100%;
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem 1rem;
+  position: relative;
+  z-index: 10;
+}
+
+.navbar h1 {
+  font-size: 1.25rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem;
+}
+
+.nav-links a:hover {
+  background-color: #444;
+  border-radius: 5px;
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: #333;
+    padding: 1rem 0;
+  }
+
+  .nav-links.show {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
+/* ================================
+   Reduced Motion
+================================= */
+
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
-   scroll-behavior: auto;
+    scroll-behavior: auto;
   }
+
   *,
   *::before,
   *::after {

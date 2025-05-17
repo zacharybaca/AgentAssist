@@ -1,18 +1,19 @@
-import './App.css';
-import { useState, useEffect } from 'react';
-import { useNavigate, Routes, Route } from 'react-router-dom';
+import "./App.css";
+import { useState, useEffect } from "react";
+import { useNavigate, Routes, Route } from "react-router-dom";
 import CreateArticle from "./components/AdminPanel/CreateArticle/CreateArticle.jsx";
 import CreateCategory from "./components/CreateCategory/CreateCategory.jsx";
 import AdminArticlesView from "./components/AdminPanel/AdminArticlesView/AdminArticlesView.jsx";
 import ArticleList from "./components/ArticleList/ArticleList.jsx";
-import { Toaster } from 'react-hot-toast';
-import Logo from './assets/agent-assist-icon-no-background.png';
-import NavBar from './components/NavBar/NavBar.jsx';
-import LoginForm from './components/LoginForm/LoginForm.jsx';
-import SignUpForm from './components/SignUpForm/SignUpForm.jsx';
-import ConfirmModal from './components/ConfirmModal/ConfirmModal.jsx';
-import ArticleRating from './components/ArticleRating/ArticleRating.jsx';
-import AdminPanel from './components/AdminPanel/AdminPanel.jsx';
+import { Toaster } from "react-hot-toast";
+import Logo from "./assets/agent-assist-icon-no-background.png";
+import NavBar from "./components/NavBar/NavBar.jsx";
+import LoginForm from "./components/LoginForm/LoginForm.jsx";
+import SignUpForm from "./components/SignUpForm/SignUpForm.jsx";
+import ConfirmModal from "./components/ConfirmModal/ConfirmModal.jsx";
+import ArticleRating from "./components/ArticleRating/ArticleRating.jsx";
+import AdminPanel from "./components/AdminPanel/AdminPanel.jsx";
+import TestComponent from "./components/TestComponent/TestComponent.jsx";
 
 function App() {
   const navigate = useNavigate();
@@ -24,8 +25,8 @@ function App() {
   useEffect(() => {
     if (loading && loader && loaderContainer) {
       setTimeout(() => {
-        loader.style.display = 'none';
-        loaderContainer.style.display = 'none';
+        loader.style.display = "none";
+        loaderContainer.style.display = "none";
         setLoading(false);
       }, 6000);
     }
@@ -49,33 +50,40 @@ function App() {
           <img src={Logo} alt="logo" />
           <h1>☎️"Answers at the speed of your next call"☎️</h1>
         </div>
-        
+
         <Routes>
+          <Route path="/" element={<LoginForm />} />
 
-          <Route path="/" element={
-              <LoginForm />
-          } />
-
+          <Route path="/test" element={<TestComponent />} />
           <Route path="/signup" element={<SignUpForm />} />
 
           <Route path="/articles" element={<ArticleList />} />
 
-          <Route path="/articles/article-rating/:id" element={<ArticleRating />} />
+          <Route
+            path="/articles/article-rating/:id"
+            element={<ArticleRating />}
+          />
 
-          <Route path="/admin/articles/create" element={<CreateArticle onSuccess={() => {
-            navigate('/admin/articles');
-          }} />} />
+          <Route
+            path="/admin/articles/create"
+            element={
+              <CreateArticle
+                onSuccess={() => {
+                  navigate("/admin/articles");
+                }}
+              />
+            }
+          />
 
           <Route path="/admin/categories/create" element={<CreateCategory />} />
 
           <Route path="/admin/articles" element={<AdminArticlesView />} />
 
           <Route path="/admin/admin-panel" element={<AdminPanel />} />
-
         </Routes>
       </div>
     )
-  )
+  );
 }
 
-export default App
+export default App;

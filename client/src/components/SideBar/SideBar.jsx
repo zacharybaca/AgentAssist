@@ -132,18 +132,19 @@ const Sidebar = ({ isOpen, close }) => {
             transition={{ type: "spring", bounce: 0.5 }}
           >
             <Reorder.Group axis="y" values={items} onReorder={setItems}>
-              <ul id="menu-icon-list">
+              <ul id="menu-icon-list" style={{ padding: 0 }}>
                 {items.map((item) => (
-                  <Reorder.Item key={item.title} value={item}>
-                    <li
-                      onClick={() => handleItemClick(item.path)}
-                      style={{ cursor: "pointer" }}
-                    >
-                      <div>
-                        <item.icon size={item.size} color={item.color} />
-                        <h3>{item.title}</h3>
-                      </div>
-                    </li>
+                  <Reorder.Item
+                    key={item.title}
+                    value={item}
+                    as="li"
+                    onClick={() => handleItemClick(item.path)}
+                    style={{ cursor: "pointer", listStyleType: "none" }} // Optional styling
+                  >
+                    <div>
+                      <item.icon size={item.size} color={item.color} />
+                      <h3>{item.title}</h3>
+                    </div>
                   </Reorder.Item>
                 ))}
               </ul>
