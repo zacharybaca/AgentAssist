@@ -29,26 +29,53 @@ const Sidebar = ({ isOpen, close }) => {
 
   const defaultItems = React.useMemo(
     () => [
-      { icon: "Newspaper", size: 35, title: "Articles", path: "/articles" },
+      {
+        icon: "Newspaper",
+        size: 35,
+        title: "Articles",
+        color: "#1D5A8E",
+        path: "/articles",
+      },
       {
         icon: "FileHeart",
         size: 35,
         title: "My Favorite Articles",
+        color: "#1D5A8E",
         path: "/favorites",
       },
-      { icon: "UserCog", size: 35, title: "Agent Settings", path: "/settings" },
-      { icon: "SquareCheck", size: 35, title: "My Tasks", path: "/tasks" },
-      { icon: "Lock", size: 35, title: "Admin Panel", path: "/admin-panel" },
+      {
+        icon: "UserCog",
+        size: 35,
+        title: "Agent Settings",
+        color: "#1D5A8E",
+        path: "/settings",
+      },
+      {
+        icon: "SquareCheck",
+        size: 35,
+        title: "My Tasks",
+        color: "#1D5A8E",
+        path: "/tasks",
+      },
+      {
+        icon: "Lock",
+        size: 35,
+        title: "Admin Panel",
+        color: "#1D5A8E",
+        path: "/admin-panel",
+      },
       {
         icon: "Mail",
         size: 35,
         title: "E-Mail Templates",
+        color: "#1D5A8E",
         path: "/email-templates",
       },
       {
         icon: "CalendarSync",
         size: 35,
         title: "My Schedule",
+        color: "#1D5A8E",
         path: "/my-schedule",
       },
     ],
@@ -104,7 +131,7 @@ const Sidebar = ({ isOpen, close }) => {
             exit={{ y: "-100%" }}
             transition={{ type: "spring", bounce: 0.5 }}
           >
-            <Reorder.Group axis="x" values={items} onReorder={setItems}>
+            <Reorder.Group axis="y" values={items} onReorder={setItems}>
               <ul id="menu-icon-list">
                 {items.map((item) => (
                   <Reorder.Item key={item.title} value={item}>
@@ -113,7 +140,7 @@ const Sidebar = ({ isOpen, close }) => {
                       style={{ cursor: "pointer" }}
                     >
                       <div>
-                        <item.icon size={item.size} />
+                        <item.icon size={item.size} color={item.color} />
                         <h3>{item.title}</h3>
                       </div>
                     </li>

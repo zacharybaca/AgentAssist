@@ -40,16 +40,17 @@
   font-style: normal;
   max-width: 30%;
   min-width: 30%;
-  min-height: fit-content;
-  max-height: fit-content;
+  min-height: 50%;
+  max-height: 50%;
+  background-color: darkgrey;
   border-radius: 10px;
   border: 3px solid black;
 }
 
 #login-form button:hover {
-  background-color: blue;
+  background-color: #004a9f;
   color: white;
-  border: 3px solid blue;
+  border: 3px solid black;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   transform: scale(1.05);
   cursor: pointer;

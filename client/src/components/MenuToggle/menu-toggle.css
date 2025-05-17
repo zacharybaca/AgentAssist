@@ -1,4 +1,8 @@
 .phone-off-icon {
-    width: 64px;
-    height: 34px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  height: 80%;
 }
