@@ -7,9 +7,7 @@ import toast from "react-hot-toast";
 
 const CreateArticle = ({ initialData = {}, onSuccess }) => {
   const [title, setTitle] = useState(initialData.title || "");
-  const [content, setContent] = useState(
-    initialData.content !== undefined ? initialData.content : ""
-  );
+  const [content, setContent] = useState(initialData.content || "");
   const [status, setStatus] = useState(initialData.status || "draft");
   const [tags, setTags] = useState(initialData.tags?.join(", ") || "");
   const [lastEdited, setLastEdited] = useState(null);
