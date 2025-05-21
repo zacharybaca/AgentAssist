@@ -22,6 +22,10 @@ const articleSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Agent",
   },
+  coverImage: {
+    url: String,
+    public_id: String,
+  },
   status: {
     type: String,
     enum: ["draft", "published"],
