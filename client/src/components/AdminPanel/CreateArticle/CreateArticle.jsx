@@ -9,6 +9,7 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
   const [title, setTitle] = useState(initialData.title || "");
   const [content, setContent] = useState(initialData.content || "");
   const [status, setStatus] = useState(initialData.status || "draft");
+  const [category, setCategory] = useState(initialData.category || "");
   const [tags, setTags] = useState(initialData.tags?.join(", ") || "");
   const [lastEdited, setLastEdited] = useState(null);
   const [wordCount, setWordCount] = useState(0);
@@ -198,6 +199,18 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
         >
           <option value="draft">Draft</option>
           <option value="published">Published</option>
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="category">Category</label>
+        <select
+          id="category"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          <option value="bills">Bills</option>
+          <option value="payment-plan">Payment Plan</option>
         </select>
       </div>
 
