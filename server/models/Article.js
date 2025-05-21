@@ -11,6 +11,9 @@ const articleSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Category", // <-- reference by model name
   },
+  tags: {
+    type: [String],
+  },
   createdAt: {
     type: Date,
     default: Date.now,
