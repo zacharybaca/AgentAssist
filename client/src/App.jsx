@@ -13,7 +13,6 @@ import SignUpForm from "./components/SignUpForm/SignUpForm.jsx";
 import ConfirmModal from "./components/ConfirmModal/ConfirmModal.jsx";
 import ArticleRating from "./components/ArticleRating/ArticleRating.jsx";
 import AdminPanel from "./components/AdminPanel/AdminPanel.jsx";
-import TestComponent from "./components/TestComponent/TestComponent.jsx";
 
 function App() {
   const navigate = useNavigate();
@@ -54,7 +53,6 @@ function App() {
         <Routes>
           <Route path="/" element={<LoginForm />} />
 
-          <Route path="/test" element={<TestComponent />} />
           <Route path="/signup" element={<SignUpForm />} />
 
           <Route path="/articles" element={<ArticleList />} />

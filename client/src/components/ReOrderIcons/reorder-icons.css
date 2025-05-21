@@ -1,13 +1,53 @@
-#menu-icon-list {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 6px;
-  min-width: 90vw;
-  max-width: 90vw;
-  padding: 5%;
-  box-sizing: border-box;
-  list-style-type: none;
+.wrapper {
+  position: relative;
+  padding: 1rem;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 5;
+}
+
+.grid {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  z-index: 10;
+  position: relative;
+}
+
+.grid.row {
+  flex-direction: row;
+}
+
+.grid.column {
+  flex-direction: column;
+}
+
+.box {
+  background: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  cursor: grab;
+  width: 160px;
+  text-align: center;
+}
+
+.icon-wrapper h3 {
+  margin-top: 0.5rem;
+  font-size: 0.9rem;
 }
 
 .axis-toggle {

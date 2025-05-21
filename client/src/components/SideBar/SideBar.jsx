@@ -1,8 +1,7 @@
 /* eslint-disable no-unused-vars */
 import "./side-bar.css";
 import React from "react";
-import { motion, Reorder } from "motion/react";
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Reorder } from "framer-motion";
 import {
   FileHeart,
   Newspaper,
@@ -14,18 +13,22 @@ import {
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-const iconMap = {
-  Newspaper,
-  FileHeart,
-  UserCog,
-  SquareCheck,
-  Lock,
-  Mail,
-  CalendarSync,
-};
-
 const Sidebar = ({ isOpen, close }) => {
   const navigate = useNavigate();
+  const [axis, setAxis] = React.useState("x");
+
+  const iconMap = React.useMemo(
+    () => ({
+      Newspaper,
+      FileHeart,
+      UserCog,
+      SquareCheck,
+      Lock,
+      Mail,
+      CalendarSync,
+    }),
+    []
+  );
 
   const defaultItems = React.useMemo(
     () => [
@@ -108,51 +111,72 @@ const Sidebar = ({ isOpen, close }) => {
       icon: Object.keys(iconMap).find((key) => iconMap[key] === icon),
     }));
     localStorage.setItem("sidebarItems", JSON.stringify(itemsToSave));
-  }, [items, defaultItems]);
+  }, [iconMap, items]);
 
   const handleItemClick = (path) => {
     if (path) navigate(path);
   };
 
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <>
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={close}
-          />
+  const resetOrder = () => {
+    setItems(defaultItems);
+  };
 
-          <motion.div
-            initial={{ y: "-100%" }}
-            animate={{ y: 0 }}
-            exit={{ y: "-100%" }}
-            transition={{ type: "spring", bounce: 0.5 }}
-          >
-            <Reorder.Group axis="y" values={items} onReorder={setItems}>
-              <ul id="menu-icon-list" style={{ padding: 0 }}>
-                {items.map((item) => (
-                  <Reorder.Item
-                    key={item.title}
-                    value={item}
-                    as="li"
-                    onClick={() => handleItemClick(item.path)}
-                    style={{ cursor: "pointer", listStyleType: "none" }} // Optional styling
-                  >
-                    <div>
-                      <item.icon size={item.size} color={item.color} />
-                      <h3>{item.title}</h3>
-                    </div>
-                  </Reorder.Item>
-                ))}
-              </ul>
-            </Reorder.Group>
-          </motion.div>
-        </>
-      )}
-    </AnimatePresence>
+  return (
+    <>
+      <div className="controls">
+        <div className="axis-toggle">
+          <span>{axis === "x" ? "Horizontal" : "Vertical"}</span>
+          <label className="switch">
+            <input
+              type="checkbox"
+              checked={axis === "y"}
+              onChange={() => setAxis(axis === "x" ? "y" : "x")}
+            />
+            <span className="slider" />
+          </label>
+        </div>
+        <button onClick={resetOrder}>Reset Order</button>
+      </div>
+
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={close}
+            />
+
+            <motion.div
+              initial={{ y: "-100%" }}
+              animate={{ y: 0 }}
+              exit={{ y: "-100%" }}
+              transition={{ type: "spring", bounce: 0.5 }}
+            >
+              <Reorder.Group axis="x" values={items} onReorder={setItems}>
+                <ul id="menu-icon-list" style={{ padding: 0 }}>
+                  {items.map((item) => (
+                    <Reorder.Item
+                      key={item.title}
+                      value={item}
+                      as="li"
+                      onClick={() => handleItemClick(item.path)}
+                      style={{ cursor: "pointer", listStyleType: "none" }} // Optional styling
+                    >
+                      <div>
+                        <item.icon size={item.size} color={item.color} />
+                        <h3>{item.title}</h3>
+                      </div>
+                    </Reorder.Item>
+                  ))}
+                </ul>
+              </Reorder.Group>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
