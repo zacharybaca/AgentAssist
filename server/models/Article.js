@@ -19,6 +19,11 @@ const articleSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "Agent",
   },
+  status: {
+    type: String,
+    enum: ["draft", "published"],
+    default: "draft",
+  },
 });
 
 const Article = mongoose.model("Article", articleSchema);
