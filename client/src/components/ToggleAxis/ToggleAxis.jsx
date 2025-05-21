@@ -1,7 +1,8 @@
 import './toggle-axis.css';
+import { useToggleAxis } from '../../hooks/useToggleAxis';
 
 const ToggleAxis = () => {
-
+    const { axis, setAxis } = useToggleAxis();
     return (
         <div className="axis-toggle">
           <span>{axis === "x" ? "Horizontal" : "Vertical"}</span>
