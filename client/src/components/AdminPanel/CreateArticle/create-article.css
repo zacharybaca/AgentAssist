@@ -1,3 +1,11 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem;
+  width: 100%;
+}
+
 form {
   display: flex;
   flex-direction: column;
@@ -34,7 +42,13 @@ select {
 
 .editor-container .ql-editor {
   min-height: 200px;
+  font-size: 1rem;
   border: 3px solid blue;
+}
+
+.editor-container {
+  min-height: 250px;
+  margin-top: 1rem;
 }
 
 .info-row {
@@ -70,16 +84,17 @@ button:hover {
 .upload-wrapper {
   border: 2px dashed #ccc;
   border-radius: 8px;
-  padding: 2rem;
+  padding: 1rem;
+  margin-top: 1rem;
   text-align: center;
   margin: 1rem 0;
-  transition: background 0.3s ease;
+  transition: background-color 0.3s ease;
   position: relative;
   cursor: pointer;
 }
 
 .upload-wrapper.dragover {
-  background-color: #f0f8ff;
+  background-color: #f0f0f0;
 }
 
 .custom-upload-label {
