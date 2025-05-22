@@ -1,25 +1,39 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./create-article.css";
-import ReactQuill from "react-quill";
-import "react-quill/dist/quill.snow.css";
+import ReactQuill from "react-quill-new";
 import { useArticles } from "../../../hooks/useArticles.js";
 import toast from "react-hot-toast";
 
+const cloudName = import.meta.env.VITE_CLOUD_NAME;
+const cloudPresetName = import.meta.env.VITE_PRESET_NAME;
+
 const CreateArticle = ({ initialData = {}, onSuccess }) => {
-  const [title, setTitle] = useState(initialData.title || "");
-  const [content, setContent] = useState(initialData.content || "");
-  const [status, setStatus] = useState(initialData.status || "draft");
-  const [category, setCategory] = useState(initialData.category || "");
-  const [tags, setTags] = useState(initialData.tags?.join(", ") || "");
-  const [lastEdited, setLastEdited] = useState(null);
-  const [wordCount, setWordCount] = useState(0);
+  const [title, setTitle] = useState(
+    initialData.title ? initialData.title : ""
+  );
+  const [content, setContent] = useState(
+    typeof initialData.content === "string" ? initialData.content : ""
+  );
+  const [status, setStatus] = useState(
+    initialData.status ? initialData.status : "draft"
+  );
+  const [category, setCategory] = useState(
+    initialData.category ? initialData.category : ""
+  );
+  const [tags, setTags] = useState(
+    initialData.tags ? initialData.tags?.join(", ") : ""
+  );
+  const [lastEdited, setLastEdited] = useState(
+    initialData.lastEdited ? initialData.lastEdited : null
+  );
+  const [wordCount, setWordCount] = useState(
+    initialData.wordCount ? initialData.wordCount : 0
+  );
   const [previewMode, setPreviewMode] = useState(false);
   const isEditing = !!initialData._id;
 
   const { createArticle, updateArticle } = useArticles();
 
-  const cloudName = import.meta.env.VITE_CLOUD_NAME;
-  const cloudPresetName = import.meta.env.VITE_PRESET_NAME;
   const quillRef = useRef(null);
   const initialRender = useRef(true);
 
@@ -120,7 +134,8 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
       container: [
         [{ header: [1, 2, 3, false] }],
         ["bold", "italic", "underline", "strike"],
-        [{ list: "ordered" }, { list: "bullet" }],
+        [{ list: "ordered" }, { list: "bullet" }, { list: "check" }],
+        [{ size: ["small", false, "large", "huge"] }],
         ["link", "blockquote", "code-block", "image"],
         ["clean"],
       ],
@@ -148,10 +163,13 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
       title,
       content,
       status,
+      category,
       tags: tags
         .split(",")
         .map((tag) => tag.trim())
         .filter(Boolean),
+      lastEdited,
+      wordCount,
     };
 
     const toastId = toast.loading(
@@ -178,7 +196,7 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
   };
 
   return (
-    <form className="container" onSubmit={handleSubmit}>
+    <form className="create-article-container" onSubmit={handleSubmit}>
       <div>
         <label htmlFor="title">Article Title</label>
         <input
@@ -215,9 +233,9 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
       </div>
 
       <div>
-        <label htmlFor="articleTags">Tags (comma separated)</label>
+        <label htmlFor="tags">Tags (comma separated)</label>
         <input
-          id="articleTags"
+          id="tags"
           type="text"
           value={tags}
           onChange={(e) => setTags(e.target.value)}
@@ -232,12 +250,11 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
         </div>
       ) : (
         <div className="editor-container">
-          <label htmlFor="articleContent">Article Content</label>
+          <label htmlFor="content">Article Content</label>
           <ReactQuill
-            id="articleContent"
-            ref={quillRef}
+            id="content"
             theme="snow"
-            value={content}
+            value={typeof content === "string" ? content : ""}
             onChange={setContent}
             modules={modules}
             placeholder="Write the article here..."
@@ -252,19 +269,20 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
 
       <div
         className="upload-wrapper"
+        id="uploadWrapper"
         onDrop={handleDrop}
         onDragOver={(e) => e.preventDefault()}
       >
         <label htmlFor="imageUpload" className="custom-upload-label">
-          Drag & drop an image here or
+          Choose an image
           <span className="upload-button">Browse</span>
-          <input
-            id="imageUpload"
-            type="file"
-            accept="image/*"
-            onChange={handleFileChange}
-          />
         </label>
+        <input
+          type="file"
+          id="imageUpload"
+          accept="image/*"
+          onChange={handleFileChange}
+        />
       </div>
 
       <div className="button-row">

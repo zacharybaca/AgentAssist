@@ -66,15 +66,12 @@ a:hover {
 
 #root {
   text-align: center;
-  background-image: url("./assets/agent-assist-background-image.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   min-height: 100vh;
   width: 100%;
   max-width: 100%;
   padding: 1rem;
   overflow-x: hidden;
+  background-color: dodgerblue;
   border: 3px dotted green;
 }
 
