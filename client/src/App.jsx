@@ -13,6 +13,7 @@ import SignUpForm from "./components/SignUpForm/SignUpForm.jsx";
 import ConfirmModal from "./components/ConfirmModal/ConfirmModal.jsx";
 import ArticleRating from "./components/ArticleRating/ArticleRating.jsx";
 import AdminPanel from "./components/AdminPanel/AdminPanel.jsx";
+import SignInForm from "./components/SignInForm/SignInForm.jsx";
 
 function App() {
   const navigate = useNavigate();
@@ -52,6 +53,8 @@ function App() {
 
         <Routes>
           <Route path="/" element={<LoginForm />} />
+
+          <Route path="/sign-in" element={<SignInForm />} />
 
           <Route path="/signup" element={<SignUpForm />} />
 

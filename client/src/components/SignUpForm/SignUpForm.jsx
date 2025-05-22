@@ -1,96 +1,141 @@
-import './sign-up-form.css';
-import { useSignUp } from '../../hooks/useSignUp.js';
-import AvatarUpload from '../AvatarUpload/AvatarUpload.jsx';
+import "./sign-up-form.css";
+import { Form, Button, Alert, Spinner } from "react-bootstrap";
+import AvatarUpload from "../AvatarUpload/AvatarUpload.jsx";
+import { useSignUp } from "../../hooks/useSignUp.js";
 
 export default function SignUpForm() {
-    const { agents, addedAgent, fetchAgents, createAgent, handleAvatarUpload, handleChange, handleSubmit, submitting, error, success } = useSignUp();
+  const {
+    agents,
+    addedAgent,
+    fetchAgents,
+    createAgent,
+    handleAvatarUpload,
+    handleChange,
+    handleSubmit,
+    submitting,
+    error,
+    success,
+  } = useSignUp();
 
-    return (
-        <form onSubmit={handleSubmit} id="signUp">
-            <h2>Create Account</h2>
+  return (
+    <div className="sign-up-form-container">
+      <Form
+        onSubmit={handleSubmit}
+        id="signUp"
+        className="p-4 border rounded bg-light"
+      >
+        <h2 className="mb-4">Create Account</h2>
 
-            <label htmlFor="name">Please Enter Your Name: </label>
+        <Form.Group controlId="name" className="mb-3">
+          <Form.Label>Please Enter Your Name:</Form.Label>
+          <Form.Control
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            value={addedAgent.name}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
 
-            <input
-                type="text"
-                name="name"
-                placeholder="Full Name"
-                value={addedAgent.name}
-                onChange={handleChange}
-                required
+        <Form.Group controlId="email" className="mb-3">
+          <Form.Label>Please Enter Your E-mail Address:</Form.Label>
+          <Form.Control
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={addedAgent.email}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group controlId="username" className="mb-3">
+          <Form.Label>Please Create A Username:</Form.Label>
+          <Form.Control
+            type="text"
+            name="username"
+            placeholder="Username"
+            value={addedAgent.username}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group controlId="password" className="mb-3">
+          <Form.Label>Please Create A Secure Password:</Form.Label>
+          <Form.Control
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={addedAgent.password}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group controlId="confirmPassword" className="mb-3">
+          <Form.Label>Please Confirm Your Chosen Password:</Form.Label>
+          <Form.Control
+            type="password"
+            name="confirmPassword"
+            placeholder="Confirm Password"
+            value={addedAgent.confirmPassword}
+            onChange={handleChange}
+            required
+          />
+        </Form.Group>
+
+        <Form.Group controlId="roles" className="mb-3">
+          <Form.Label>Select A Role</Form.Label>
+          <Form.Select
+            name="roles"
+            value={addedAgent.roles || "agent"}
+            onChange={handleChange}
+            required
+          >
+            <option value="admin">Admin</option>
+            <option value="manager">Manager</option>
+            <option value="supervisor">Supervisor</option>
+            <option value="agent">Agent</option>
+          </Form.Select>
+        </Form.Group>
+
+        <Form.Group className="mb-3">
+          <Form.Label>Upload an Avatar</Form.Label>
+          <AvatarUpload onUploadComplete={handleAvatarUpload} />
+        </Form.Group>
+
+        {addedAgent.avatar && (
+          <div className="text-center mb-3">
+            <p>Preview:</p>
+            <img
+              src={addedAgent.avatar}
+              alt="avatar preview"
+              className="img-thumbnail"
+              style={{ maxWidth: "150px" }}
             />
+          </div>
+        )}
 
-            <label htmlFor="email">Please Enter Your E-mail Address: </label>
-
-            <input
-                type="email"
-                name="email"
-                placeholder="Email"
-                value={addedAgent.email}
-                onChange={handleChange}
-                required
-            />
-
-            <label htmlFor="username">Please Create A Username: </label>
-
-            <input
-                type="text"
-                name="username"
-                placeholder="Username"
-                value={addedAgent.username}
-                onChange={handleChange}
-                required
-            />
-
-            <label htmlFor="password">Please Create A Secure Password: </label>
-
-            <input
-                type="password"
-                name="password"
-                placeholder="Password"
-                value={addedAgent.password}
-                onChange={handleChange}
-                required
-            />
-
-            <label htmlFor="confirm">Please Confirm You Chosen Password: </label>
-
-            <input
-                type="password"
-                name="confirm"
-                placeholder="Confirm Password"
-                value={addedAgent.confirmPassword}
-                onChange={handleChange}
-                required
-            />
-
-            <label htmlFor="roles">Select A Role</label>
-
-            <select name="roles" id="roles" form="signUp" required>
-                <option value="admin">Admin</option>
-                <option value="manager">Manager</option>
-                <option value="supervisor">Supervisor</option>
-                <option selected value="agent">Agent</option>
-            </select>
-
-            <AvatarUpload onUploadComplete={handleAvatarUpload} />
-
-            {addedAgent.avatar && (
-                <div className="text-center">
-                    <p>Preview:</p>
-                    <img src={addedAgent.avatar} alt="avatar preview" />
-                </div>
+        <div className="d-grid mb-3">
+          <Button type="submit" variant="primary" disabled={submitting}>
+            {submitting ? (
+              <>
+                <Spinner animation="border" size="sm" className="me-2" />
+                Creating account...
+              </>
+            ) : (
+              "Sign Up"
             )}
+          </Button>
+        </div>
 
-            <button
-                type="submit"
-                disabled={submitting}
-            >
-                {submitting ? 'Creating account...' : 'Sign Up'}
-            </button>
-
-            {error && <p>{error}</p>}
-            {success && <p>Account created successfully!</p>}
-        </form>
-    );
+        {error && <Alert variant="danger">{error}</Alert>}
+        {success && (
+          <Alert variant="success">Account created successfully!</Alert>
+        )}
+      </Form>
+    </div>
+  );
 }

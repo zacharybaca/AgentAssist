@@ -10,12 +10,14 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "bootstrap": "^5.3.6",
     "framer-motion": "^12.7.3",
     "lucide-react": "^0.488.0",
     "motion": "^12.10.4",
     "quill": "^2.0.3",
     "react": "^18.3.1",
     "react-avatar-editor": "^13.0.2",
+    "react-bootstrap": "^2.10.10",
     "react-dom": "^18.3.1",
     "react-dropzone": "^14.3.8",
     "react-hot-toast": "^2.5.2",
