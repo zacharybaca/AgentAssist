@@ -73,10 +73,10 @@ const SignInForm = () => {
             {loading ? (
               <>
                 <Spinner animation="border" size="sm" className="me-2" />
-                Creating account...
+                Loading...
               </>
             ) : (
-              "Sign Up"
+              "Sign In"
             )}
           </Button>
         </div>
