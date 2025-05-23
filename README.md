@@ -1,6 +1,8 @@
-# AgentAssist
+# <div align="center">AgentAssist</div>
 
-**"Answers at the speed of your next call."**
+<div align="center">**"Answers at the speed of your next call."**</div>
+
+<br />
 
 AgentAssist is built to enhance the customer support experience by equipping agents with a robust knowledge base of helpful articles. These articles offer clear answers to common customer questions and provide step-by-step guidance for handling processes agents encounter in their daily workflows. The application is currently in development, with additional features planned for future releases.
 
