@@ -1,7 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400..700&display=swap");
+
 #menu-icon-list {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
+  place-items: center;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 6px;
   min-width: 90vw;
   max-width: 90vw;
@@ -10,9 +12,33 @@
   list-style-type: none;
 }
 
+#menu-icon-list li {
+  text-align: center;
+}
+
+.side-bar-container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2%;
+  gap: 10px;
+  font-family: "Markazi Text", serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  border: 4px solid green;
+}
+
+.controls {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 3px solid blue;
+}
+
 .axis-toggle {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   gap: 0.5rem;
   font-weight: 500;
 }
@@ -65,4 +91,16 @@ input:checked + .slider {
 input:checked + .slider:before {
   transform: translateX(24px);
   content: "↕";
+}
+
+.reset-button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  font-weight: 500;
+}
+
+.dark-mode {
+  color: white;
+  background-color: darkslategrey;
 }

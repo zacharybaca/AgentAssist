@@ -15,7 +15,7 @@ import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({ isOpen, close }) => {
   const navigate = useNavigate();
-  const [axis, setAxis] = React.useState("x");
+  const [darkMode, setDarkMode] = React.useState(false);
 
   const iconMap = React.useMemo(
     () => ({
@@ -122,24 +122,26 @@ const Sidebar = ({ isOpen, close }) => {
   };
 
   return (
-    <>
-      <div className="controls">
-        <div className="axis-toggle">
-          <span>{axis === "x" ? "Horizontal" : "Vertical"}</span>
-          <label className="switch">
-            <input
-              type="checkbox"
-              checked={axis === "y"}
-              onChange={() => setAxis(axis === "x" ? "y" : "x")}
-            />
-            <span className="slider" />
-          </label>
+    isOpen && (
+      <div className={`side-bar-container ${darkMode ? "dark-mode" : ""}`}>
+        <div className="controls">
+          <div className="axis-toggle">
+            <span>{darkMode ? "Dark Mode On" : "Dark Mode Off"}</span>
+            <label className="switch">
+              <input
+                type="checkbox"
+                checked={darkMode}
+                onChange={() => setDarkMode(!darkMode)}
+              />
+              <span className="slider" />
+            </label>
+          </div>
+          <div className="reset-button-container">
+            <button onClick={resetOrder}>Reset Order</button>
+          </div>
         </div>
-        <button onClick={resetOrder}>Reset Order</button>
-      </div>
 
-      <AnimatePresence>
-        {isOpen && (
+        <AnimatePresence>
           <>
             <motion.div
               initial={{ opacity: 0 }}
@@ -174,9 +176,9 @@ const Sidebar = ({ isOpen, close }) => {
               </Reorder.Group>
             </motion.div>
           </>
-        )}
-      </AnimatePresence>
-    </>
+        </AnimatePresence>
+      </div>
+    )
   );
 };
 
