@@ -76,7 +76,7 @@ AgentAssist is designed to enhance customer support experiences by providing rea
       - <code>GET /api/agents/:id</code>
       - Retrieves an agent by their unique ID.
      
-      3. Create a New Task
+      3. Create a New Agent
          - <code>POST /api/agents</code>
          - Requires the agent data in the request body.
          - Example Request Body:
