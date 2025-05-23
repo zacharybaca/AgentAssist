@@ -18,7 +18,42 @@ AgentAssist is designed to enhance customer support experiences by providing rea
 - **Authentication**: JWT (JSON Web Tokens).
 - **Styling**: CSS.
 
-## Getting Started
+## Project Structure
+  - Structure of How Project File System is Set Up
+   ```bash
+   software-bug-tracker/
+   ├── client/               # Frontend (React with Vite)
+      ├── src
+         ├── assets          # Images or media files
+         ├── components      # Components used in the application
+         ├── context         # Used for global state management for components
+         ├── hooks           # Custom hooks used for context functionality
+         ├── App.css         # Global CSS file
+         ├── App.jsx         # Main application file
+         ├── index.css       # Main CSS file
+         ├── main.jsx        # Main application housing file
+      ├── index.html         # HTML file that hosts web application root
+      ├── loader.css         # CSS file for the global loader icon
+   ├── server/               # Backend (Node.js + Express)
+      ├── controllers/       # Database Functions for Agents, Articles, and Categories
+         ├── agentController
+         ├── articleController
+         ├── authController
+         ├── categoryController
+      ├── middleware/        # Middleware Functions/Helpers
+         ├── auth
+      ├── models/            # Mongoose schemas for tasks and employees
+         ├── Agent
+         ├── Article
+         ├── Category
+      ├── routes/            # API route definitions
+         ├── agentRouter
+         ├── articleRouter
+         ├── authRoutes
+         ├── categoryRouter
+      ├── server.js          # Main Server Entry File
+   └── README.md             # Project documentation
+   ```
 
 ### Prerequisites
 
