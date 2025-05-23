@@ -80,36 +80,36 @@ Ensure you have the following installed on your machine:
             }
          ]
 
-      2. Get a Specific Agent
+   2. Get a Specific Agent
       - <code>GET /api/agents/:id</code>
       - Retrieves an agent by their unique ID.
      
-      3. Create a New Agent
-         - <code>POST /api/agents</code>
-         - Requires the agent data in the request body.
-         - Example Request Body:
-            ```bash
-            {
-                  "_id": "agentId123",
-                  "name": "John Smith",
-                  "username": "jsmith",
-                  "email": "jsmith@test.com",
-                  "phoneNumber": "555-555-5555",
-                  "password": "testing",
-                  "role": "agent",
-                  "favoriteArticles": ["One", "Two"],
-                  "tasks": ["Task 1", "Task 2"],
-                  "avatar": "https://www.testurl.com/image/url"
-            }
+   3. Create a New Agent
+      - <code>POST /api/agents</code>
+      - Requires the agent data in the request body.
+      - Example Request Body:
+        ```bash
+        {
+           "_id": "agentId123",
+           "name": "John Smith",
+           "username": "jsmith",
+           "email": "jsmith@test.com",
+           "phoneNumber": "555-555-5555",
+           "password": "testing",
+           "role": "agent",
+           "favoriteArticles": ["One", "Two"],
+           "tasks": ["Task 1", "Task 2"],
+           "avatar": "https://www.testurl.com/image/url"
+        }
 
-      4. Update an Existing Agent
-         - <code>PUT /api/agents/:id</code>
-         - Updates the details of an existing agent.
+   4. Update an Existing Agent
+      - <code>PUT /api/agents/:id</code>
+      - Updates the details of an existing agent.
         
-      5. Delete an Agent
-         - <code>DELETE /api/agents/:id</code>
-         - Deletes an agent by ID.
+   5. Delete an Agent
+      - <code>DELETE /api/agents/:id</code>
+      - Deletes an agent by ID.
         
-      6. Upload an Agent Avatar
-         - <code>POST /api/agents/upload-avatar</code>
-         - Uploads an avatar for an agent profile
+   6. Upload an Agent Avatar
+      - <code>POST /api/agents/upload-avatar</code>
+      - Uploads an avatar for an agent profile
