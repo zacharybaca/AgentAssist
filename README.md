@@ -12,9 +12,11 @@ AgentAssist is designed to enhance customer support experiences by providing rea
 
 ## Technologies Used
 
-- **Frontend:** JavaScript, HTML, CSS
-- **Backend:** Node.js
-- **AI Integration:** Utilizes AI models to assist in real-time decision-making.
+- **Frontend**: React.js with Vite for fast development and optimized builds.
+- **Backend**: Node.js, Express.js.
+- **Database**: MongoDB with Mongoose ORM.
+- **Authentication**: JWT (JSON Web Tokens).
+- **Styling**: CSS.
 
 ## Getting Started
 
