@@ -93,9 +93,9 @@ Ensure you have the following installed on your machine:
 4. Start the development servers:
    ```bash
    cd client
-   npm start
+   npm run dev
    cd ../server
-   npm start
+   npm run start
 
 ## 📡 API Documentation
 
