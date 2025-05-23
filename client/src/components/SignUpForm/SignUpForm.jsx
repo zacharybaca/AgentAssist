@@ -87,18 +87,22 @@ export default function SignUpForm() {
         </Form.Group>
 
         <Form.Group controlId="roles" className="mb-3">
-          <Form.Label>Select A Role</Form.Label>
-          <Form.Select
-            name="roles"
-            value={addedAgent.roles || "agent"}
-            onChange={handleChange}
-            required
-          >
-            <option value="admin">Admin</option>
-            <option value="manager">Manager</option>
-            <option value="supervisor">Supervisor</option>
-            <option value="agent">Agent</option>
-          </Form.Select>
+          <div className="form-option-container">
+          <Form.Label>Select A Role: </Form.Label>
+          {["admin", "manager", "supervisor", "agent"].map((role) => (
+            <Form.Check
+              inline
+              type="checkbox"
+              name="roles"
+              value={role}
+              label={`${role.charAt(0).toUpperCase()}${role.slice(1)}`}
+              id={`default-${role}`}
+              checked={addedAgent.roles?.includes(role) || false}
+              onChange={handleChange}
+              key={role}
+            />
+          ))}
+        </div>
         </Form.Group>
 
         <Form.Group className="mb-3">
