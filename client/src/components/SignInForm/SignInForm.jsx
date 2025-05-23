@@ -1,5 +1,4 @@
 import { Form, Button, Alert, Spinner } from "react-bootstrap";
-import CustomLoadingButton from "../CustomLoadingButton/CustomLoadingButton";
 import { useAuth } from "../../hooks/useAuth.js";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -11,6 +10,7 @@ const SignInForm = () => {
   const navigate = useNavigate();
   const [form, setForm] = useState({ username: "", password: "" });
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, type, value, checked } = e.target;
@@ -68,13 +68,23 @@ const SignInForm = () => {
             required
           />
         </Form.Group>
-        {error && <Alert variant="danger">{error}</Alert>}
-        {/* {success && (
-            <Alert variant="success">Account created successfully!</Alert>
-          )} */}
-        <div className="sign-in-button-container">
-          <CustomLoadingButton bttnText="Sign In" text="Signing In..." />
+        <div className="d-grid mb-3">
+          <Button type="submit" variant="primary">
+            {loading ? (
+              <>
+                <Spinner animation="border" size="sm" className="me-2" />
+                Creating account...
+              </>
+            ) : (
+              "Sign Up"
+            )}
+          </Button>
         </div>
+
+        {error && <Alert variant="danger">{error}</Alert>}
+        {success && (
+          <Alert variant="success">Account created successfully!</Alert>
+        )}
       </Form>
     </div>
   );
