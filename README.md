@@ -2,13 +2,13 @@
 
 **"Answers at the speed of your next call."**
 
-AgentAssist is designed to enhance customer support experiences by providing real-time assistance to agents during calls. By integrating advanced AI capabilities, it aims to streamline interactions, reduce response times, and improve overall customer satisfaction.
+AgentAssist is built to enhance the customer support experience by equipping agents with a robust knowledge base of helpful articles. These articles offer clear answers to common customer questions and provide step-by-step guidance for handling processes agents encounter in their daily workflows. The application is currently in development, with additional features planned for future releases.
 
 ## Features
 
-- **Real-Time AI Assistance:** Leverages AI to provide instant suggestions and information to support agents during live calls.
-- **User-Friendly Interface:** Built with a modern frontend to ensure ease of use and quick adoption by support teams.
-- **Scalable Architecture:** Structured to accommodate growing support needs and integrate with existing systems.
+- **Real-Time Knowledgebase Articles:** Management-approved articles are instantly accessible to assist agents with accurate,                                          up-to-date information.
+- **User-Friendly Interface:** A modern, intuitive design ensures ease of use and encourages quick adoption by support teams.
+- **Scalable Architecture:** Built to grow with your organization, supporting increased demand and seamless integration with                                existing systems.
 
 ## Technologies Used
 
@@ -55,7 +55,11 @@ AgentAssist is designed to enhance customer support experiences by providing rea
    └── README.md             # Project documentation
    ```
 
-### Prerequisites
+## Deployment
+  1. The application is deployed on Render.
+    - Configure the environment variables on Render to match your <code>.env</code> file.
+        
+## Prerequisites
 
 Ensure you have the following installed on your machine:
 
@@ -66,7 +70,7 @@ Ensure you have the following installed on your machine:
 - **Vite**: For frontend development.
 - **Render**: Hosting for deployment.
 
-### Installation
+## Installation
 
 1. Clone the repository:
 
