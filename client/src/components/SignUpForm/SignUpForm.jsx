@@ -18,7 +18,7 @@ export default function SignUpForm() {
   } = useSignUp();
 
   return (
-    <div className="sign-up-form-container">
+    <div className="sign-up-form-container gap-2">
       <Form
         onSubmit={handleSubmit}
         id="signUp"
