@@ -22,8 +22,14 @@ AgentAssist is designed to enhance customer support experiences by providing rea
 
 ### Prerequisites
 
-- Node.js installed on your machine
-- Package manager (npm or yarn)
+Ensure you have the following installed on your machine:
+
+- **Node.js**: v14.x or later.
+- **npm**: v6.x or later.
+- **MongoDB**: A running MongoDB instance, either local or cloud-based (e.g., MongoDB Atlas).
+- **Git**: To clone the repository.
+- **Vite**: For frontend development.
+- **Render**: Hosting for deployment.
 
 ### Installation
 
@@ -50,9 +56,9 @@ AgentAssist is designed to enhance customer support experiences by providing rea
    cd ../server
    npm start
 
-📡 API Documentation
+## 📡 API Documentation
 
-## Agent/Employee Management
+### Agent/Employee Management
 
    1. Get All Agents
       - <code>GET /api/agents</code>
