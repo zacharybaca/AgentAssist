@@ -68,22 +68,6 @@ const SignInForm = () => {
             required
           />
         </Form.Group>
-        <div className="form-option-container">
-          <Form.Label>Select A Role: </Form.Label>
-          {["admin", "manager", "supervisor", "agent"].map((role) => (
-            <Form.Check
-              inline
-              type="checkbox"
-              name="roles"
-              value={role}
-              label={`${role.charAt(0).toUpperCase()}${role.slice(1)}`}
-              id={`default-${role}`}
-              checked={form.roles?.includes(role) || false}
-              onChange={handleChange}
-              key={role}
-            />
-          ))}
-        </div>
         {error && <Alert variant="danger">{error}</Alert>}
         {/* {success && (
             <Alert variant="success">Account created successfully!</Alert>
