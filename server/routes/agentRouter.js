@@ -10,7 +10,11 @@ import {
   getUserFavoriteArticles,
 } from "../controllers/agentController.js";
 
-import { authenticateToken, requireAdmin } from "../middleware/auth.js";
+import {
+  authenticateUser,
+  requireAdmin,
+  requireAuth,
+} from "../middleware/auth.js";
 
 const router = express.Router();
 
@@ -23,16 +27,16 @@ router.put(
 router.get("/favorite-articles/:agentId", requireAuth, getUserFavoriteArticles);
 
 // Admin-only Accessible Routes
-router.get("/", authenticateToken, requireAdmin, getAllAgents);
-router.get("/:id", authenticateToken, requireAdmin, getAgentById);
-router.post("/", authenticateToken, requireAdmin, createAgent);
+router.get("/", authenticateUser, requireAdmin, getAllAgents);
+router.get("/:id", authenticateUser, requireAdmin, getAgentById);
+router.post("/", authenticateUser, requireAdmin, createAgent);
 router.post(
   "/upload-avatar",
-  authenticateToken,
+  authenticateUser,
   requireAdmin,
   uploadAgentAvatar
 );
-router.put("/:id", authenticateToken, requireAdmin, updateAgent);
-router.delete("/:id", authenticateToken, requireAdmin, deleteAgent);
+router.put("/:id", authenticateUser, requireAdmin, updateAgent);
+router.delete("/:id", authenticateUser, requireAdmin, deleteAgent);
 
 export default router;

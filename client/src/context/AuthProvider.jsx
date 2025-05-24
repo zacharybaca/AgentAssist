@@ -34,7 +34,8 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = () => {
+  const logout = async (req, res) => {
+    if (!token) return res.status(400).json({ error: "No token provided" });
     localStorage.removeItem("token");
     setToken(null);
     setIsAuthenticated(false);

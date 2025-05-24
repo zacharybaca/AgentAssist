@@ -10,9 +10,13 @@ import agentRouter from "./routes/agentRouter.js";
 
 dotenv.config();
 const app = express();
+const { authenticateUser } = require("./middleware/auth.js");
+const activityLogger = require("./middleware/activityLogger.js");
 
 app.use(cors());
 app.use(express.json());
+app.use(authenticateUser);
+app.use(activityLogger);
 
 // Routes
 app.use("/api/articles", articleRouter);

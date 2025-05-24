@@ -1,19 +1,19 @@
-import jwt from "jsonwebtoken";
+require("dotenv").config();
+const { expressjwt: jwt } = require("express-jwt");
+const BlacklistedToken = require("../models/Token");
 
-export const authenticateToken = (req, res, next) => {
-  const authHeader = req.headers.authorization;
-  const token = authHeader?.split(" ")[1];
+export const authenticateUser = jwt({
+  secret: process.env.SECRET,
+  algorithms: ["HS256"],
+  isRevoked: async (req, token) => {
+    if (!token?.jti) return true;
 
-  if (!token) return res.sendStatus(401);
-
-  try {
-    const decoded = jwt.verify(token, process.env.SECRET);
-    req.user = decoded;
-    next();
-  } catch (err) {
-    return res.sendStatus(403);
-  }
-};
+    const blacklisted = await BlacklistedToken.findOne({ jti: token.jti });
+    return !!blacklisted;
+  },
+}).unless({
+  path: ["/api/agents/sign-in", "/api/agents/signup"],
+});
 
 export const requireAdmin = (req, res, next) => {
   if (req.user?.role !== "admin") return res.sendStatus(403);
@@ -33,4 +33,23 @@ export const requireSuperVisor = (req, res, next) => {
 export const requireAgent = (req, res, next) => {
   if (req.user?.role !== "agent") return res.sendStatus(403);
   next();
+};
+
+export const requireAuth = (req, res, next) => {
+  const { agentId } = req.params;
+  const loggedInUser = req.auth?._id;
+
+  if (!loggedInUser)
+    return res.status(403).json({ error: "No Logged In User Detected" });
+
+  try {
+    if (agentId !== loggedInUser) {
+      return res
+        .status(403)
+        .json({ error: "Unauthorized access to this agent's data." });
+    }
+    next();
+  } catch (err) {
+    res.status(500).json(err);
+  }
 };
