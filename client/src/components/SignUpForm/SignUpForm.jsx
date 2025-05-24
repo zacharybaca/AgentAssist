@@ -88,21 +88,21 @@ export default function SignUpForm() {
 
         <Form.Group controlId="roles" className="mb-3">
           <div className="form-option-container">
-          <Form.Label>Select A Role: </Form.Label>
-          {["admin", "manager", "supervisor", "agent"].map((role) => (
-            <Form.Check
-              inline
-              type="checkbox"
-              name="roles"
-              value={role}
-              label={`${role.charAt(0).toUpperCase()}${role.slice(1)}`}
-              id={`default-${role}`}
-              checked={addedAgent.roles?.includes(role) || false}
-              onChange={handleChange}
-              key={role}
-            />
-          ))}
-        </div>
+            <Form.Label>Select A Role: </Form.Label>
+            {["admin", "manager", "supervisor", "agent"].map((role) => (
+              <Form.Check
+                inline
+                type="checkbox"
+                name="roles"
+                value={role}
+                label={`${role.charAt(0).toUpperCase()}${role.slice(1)}`}
+                id={`default-${role}`}
+                checked={addedAgent.roles?.includes(role) || false}
+                onChange={handleChange}
+                key={role}
+              />
+            ))}
+          </div>
         </Form.Group>
 
         <Form.Group className="mb-3">
@@ -123,14 +123,25 @@ export default function SignUpForm() {
         )}
 
         <div className="d-grid mb-3">
-          <Button type="submit" variant="primary" disabled={submitting}>
+          <Button
+            type="submit"
+            variant="primary"
+            disabled={submitting}
+            className="btn btn-primary d-flex align-items-center justify-content-center gap-3 py-3"
+          >
             {submitting ? (
               <>
                 <Spinner animation="border" size="sm" className="me-2" />
-                Creating account...
+                <h1>Creating account...</h1>
               </>
             ) : (
-              "Sign Up"
+              <>
+                <i
+                  className="bi bi-person-plus add-person-icon"
+                  style={{ fontSize: "1.75rem" }}
+                ></i>
+                <h1>Sign Up</h1>
+              </>
             )}
           </Button>
         </div>

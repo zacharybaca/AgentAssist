@@ -4,7 +4,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  padding-left: 20%;
+  padding-right: 20%;
   gap: 15px;
   font-family: "Markazi Text", serif;
   font-optical-sizing: auto;
@@ -19,8 +22,6 @@
   color: dodgerblue;
 }
 
-.sign-in-button-container {
-  display: flex;
-  justify-content: center;
-  padding: 3%;
+.arrow-icon {
+  margin-top: 1.5%;
 }

@@ -4,7 +4,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 10%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  padding-left: 20%;
+  padding-right: 20%;
   gap: 15px;
   font-family: "Markazi Text", serif;
   font-optical-sizing: auto;
@@ -17,4 +20,8 @@
 
 .sign-up-form-container h2 {
   color: dodgerblue;
+}
+
+.add-person-icon {
+  margin-top: 2%;
 }
