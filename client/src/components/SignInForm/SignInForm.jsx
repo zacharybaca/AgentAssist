@@ -1,11 +1,23 @@
-import { Form, Button, Alert, Spinner } from "react-bootstrap";
+import { Form, Button, Spinner } from "react-bootstrap";
 import { useAuth } from "../../hooks/useAuth.js";
-import { LogIn } from "lucide-react";
+import { useAlert } from "../../hooks/useAlert.js";
+import AlertNotification from "../AlertNotification/AlertNotification.jsx";
+import { useEffect } from "react";
 import "./sign-in-form.css";
 
 const SignInForm = () => {
   const { handleSubmit, form, handleChange, loading, error, success } =
     useAuth();
+
+  const { setAlertMessage } = useAlert();
+
+  useEffect(() => {
+    if (error) {
+      setAlertMessage(error);
+    } else if (success) {
+      setAlertMessage("Signed In Successfully!");
+    }
+  }, [error, setAlertMessage, success]);
 
   return (
     <div className="main-sign-in-container gap-3">
@@ -53,7 +65,7 @@ const SignInForm = () => {
             ) : (
               <>
                 <i
-                  class="bi bi-arrow-right-circle arrow-icon"
+                  className="bi bi-arrow-right-circle arrow-icon"
                   style={{ fontSize: "1.75rem" }}
                 ></i>
                 <h1>Sign In</h1>
@@ -62,10 +74,8 @@ const SignInForm = () => {
           </Button>
         </div>
 
-        {error && <Alert variant="danger">{error}</Alert>}
-        {success && (
-          <Alert variant="success">Account created successfully!</Alert>
-        )}
+        {error && <AlertNotification error={error} />}
+        {success && <AlertNotification success={success} />}
       </Form>
     </div>
   );

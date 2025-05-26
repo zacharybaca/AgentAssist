@@ -15,7 +15,10 @@ import { useNavigate } from "react-router-dom";
 
 const Sidebar = ({ isOpen, close }) => {
   const navigate = useNavigate();
-  const [darkMode, setDarkMode] = React.useState(false);
+  const [darkMode, setDarkMode] = React.useState(() => {
+    const saved = localStorage.getItem("dark-mode");
+    return saved ? JSON.parse(saved) : false;
+  });
 
   const iconMap = React.useMemo(
     () => ({
@@ -112,6 +115,11 @@ const Sidebar = ({ isOpen, close }) => {
     }));
     localStorage.setItem("sidebarItems", JSON.stringify(itemsToSave));
   }, [iconMap, items]);
+
+  // Save darkMode to localStorage whenever it changes
+  React.useEffect(() => {
+    localStorage.setItem("dark-mode", JSON.stringify(darkMode));
+  }, [darkMode]);
 
   const handleItemClick = (path) => {
     if (path) navigate(path);

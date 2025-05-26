@@ -8,7 +8,6 @@ import ArticleList from "./components/ArticleList/ArticleList.jsx";
 import { Toaster } from "react-hot-toast";
 import Logo from "./assets/agent-assist-icon-no-background.png";
 import NavBar from "./components/NavBar/NavBar.jsx";
-import LoginForm from "./components/LoginForm/LoginForm.jsx";
 import SignUpForm from "./components/SignUpForm/SignUpForm.jsx";
 import ConfirmModal from "./components/ConfirmModal/ConfirmModal.jsx";
 import ArticleRating from "./components/ArticleRating/ArticleRating.jsx";
@@ -53,9 +52,7 @@ function App() {
         </div>
 
         <Routes>
-          <Route path="/" element={<LoginForm />} />
-
-          <Route path="/sign-in" element={<SignInForm />} />
+          <Route path="/" element={<SignInForm />} />
 
           <Route path="/signup" element={<SignUpForm />} />
 

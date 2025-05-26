@@ -19,7 +19,7 @@ export const AuthProvider = ({ children }) => {
         body: JSON.stringify({ username, password }),
       });
 
-      if (!res.ok) throw new Error("Login failed");
+      if (!res.ok) throw new Error("Incorrect Username and Password");
       const data = await res.json();
 
       localStorage.setItem("token", data.token);
@@ -30,15 +30,33 @@ export const AuthProvider = ({ children }) => {
       return { success: true };
     } catch (err) {
       console.error(err);
+      setError(err.message);
+      setSuccess(false);
       return { success: false, message: err.message };
     }
   };
 
-  const logout = async (req, res) => {
-    if (!token) return res.status(400).json({ error: "No token provided" });
-    localStorage.removeItem("token");
-    setToken(null);
-    setIsAuthenticated(false);
+  const logout = async () => {
+    try {
+      const res = await fetch("api/auth/logout", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!res.ok || !token) throw new Error("No User is Currently Logged In!");
+
+      localStorage.removeItem("token");
+      setToken(null);
+      setIsAuthenticated(false);
+    } catch (err) {
+      console.error(err);
+      setError(err.message);
+      setSuccess(true);
+      return { success: true, message: err.message };
+    }
   };
 
   const handleChange = (e) => {
