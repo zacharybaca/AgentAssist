@@ -25,3 +25,9 @@
 .add-person-icon {
   margin-top: 2%;
 }
+
+#form-option-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

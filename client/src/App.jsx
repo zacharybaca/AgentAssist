@@ -52,7 +52,7 @@ function App() {
         </div>
 
         <Routes>
-          <Route path="/" element={<SignInForm />} />
+          <Route exact path="/" element={<SignInForm />} />
 
           <Route path="/signup" element={<SignUpForm />} />
 

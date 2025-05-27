@@ -24,6 +24,9 @@
   display: flex;
   justify-content: center;
   padding-bottom: 10px;
+  min-width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 #logo-container {
@@ -53,4 +56,57 @@
 
 .loading-screen {
   background-color: dodgerblue;
+}
+
+#loader-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+#loader {
+  border: 2px solid green;
+}
+
+#loading-tagline {
+  text-align: center;
+  white-space: normal;
+  word-wrap: break-word;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 2px solid yellow;
+}
+
+@media screen and (max-width: 390px) {
+  #logo-container h1 {
+    font-family: "Markazi Text", serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+    font-size: large;
+    display: none;
+  }
+
+  #loading-tagline {
+    text-align: center;
+    white-space: normal;
+    word-wrap: break-word;
+    max-width: 390px;
+    margin: 0 auto;
+    border: 2px solid black;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  #logo-container h1 {
+    font-family: "Markazi Text", serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+    font-size: x-large;
+  }
 }

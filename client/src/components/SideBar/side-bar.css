@@ -21,10 +21,13 @@
   flex-direction: column;
   padding-top: 2%;
   gap: 10px;
+  max-width: 93vw;
+  min-width: 93vw;
   font-family: "Markazi Text", serif;
   font-optical-sizing: auto;
   font-weight: 800;
   font-style: normal;
+  box-sizing: border-box;
   border: 4px solid green;
 }
 
@@ -32,6 +35,7 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
+  box-sizing: border-box;
   border: 3px solid blue;
 }
 
@@ -103,4 +107,21 @@ input:checked + .slider:before {
 .dark-mode {
   color: white;
   background-color: darkslategrey;
+}
+
+@media screen and (max-width: 390px) {
+  .side-bar-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 2%;
+    gap: 10px;
+    max-width: 88vw;
+    min-width: 88vw;
+    font-family: "Markazi Text", serif;
+    font-optical-sizing: auto;
+    font-weight: 800;
+    font-style: normal;
+    box-sizing: border-box;
+    border: 4px solid green;
+  }
 }
