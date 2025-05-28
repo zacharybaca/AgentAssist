@@ -130,6 +130,7 @@ input:checked + .slider:before {
     display: flex; /* Changed from grid to flex for better centering control */
     flex-direction: column;
     align-items: center; /* Center each item horizontally */
+    flex-wrap: wrap;
     gap: 10px;
     width: 100%; /* Let it span full width */
     padding: 5%;
