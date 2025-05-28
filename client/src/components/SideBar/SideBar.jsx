@@ -12,6 +12,16 @@ import {
   CalendarSync,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+const [axis, setAxis] = React.useState(window.innerWidth <= 390 ? "y" : "x");
+
+React.useEffect(() => {
+  const handleResize = () => {
+    setAxis(window.innerWidth <= 390 ? "y" : "x");
+  };
+
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
 
 const Sidebar = ({ isOpen, close }) => {
   const navigate = useNavigate();
@@ -164,7 +174,7 @@ const Sidebar = ({ isOpen, close }) => {
               exit={{ y: "-100%" }}
               transition={{ type: "spring", bounce: 0.5 }}
             >
-              <Reorder.Group axis="x" values={items} onReorder={setItems}>
+              <Reorder.Group axis={axis} values={items} onReorder={setItems}>
                 <ul id="menu-icon-list" style={{ padding: 0 }}>
                   {items.map((item) => (
                     <Reorder.Item
