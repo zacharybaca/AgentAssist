@@ -38,24 +38,24 @@ AgentAssist is built to enhance the customer support experience by equipping age
       ├── loader.css             # CSS file for the global loader icon
    ├── server/                   # Backend (Node.js + Express)
       ├── controllers/           # Database Functions for Agents, Articles, and Categories
-         ├── agentController       # Create, Read, Update, and Delete Functions for Agents
-         ├── articleController     # Create, Read, Update, and Delete Functions for Articles
-         ├── authController        # Functions That Relate to Logging In, Logging Out, and Role-based Authorization
-         ├── categoryController    # Create, Read, Update, and Delete Functions for Categories
+         ├── agentController       - Create, Read, Update, and Delete Functions for Agents
+         ├── articleController     - Create, Read, Update, and Delete Functions for Articles
+         ├── authController        - Functions That Relate to Logging In, Logging Out, and Role-based Authorization
+         ├── categoryController    - Create, Read, Update, and Delete Functions for Categories
       ├── middleware/            # Middleware Functions/Helpers
-         ├── auth                  # Functions That Verify Access to Certain Features of the Application
-         ├── activityLogger        # Function That Records Application Activity for Each User
+         ├── auth                  - Functions That Verify Access to Certain Features of the Application
+         ├── activityLogger        - Function That Records Application Activity for Each User
       ├── models/                # Mongoose schemas for tasks and employees
-         ├── ActivityLog           # Schema That Describes ActivityLog Document
-         ├── Agent                 # Schema That Describes Agent Document
-         ├── Article               # Schema That Describes Article Document
-         ├── Category              # Schema That Describes Category Document
-         ├── Token                 # Schema That Describes Token Document
+         ├── ActivityLog           - Schema That Describes ActivityLog Document
+         ├── Agent                 - Schema That Describes Agent Document
+         ├── Article               - Schema That Describes Article Document
+         ├── Category              - Schema That Describes Category Document
+         ├── Token                 - Schema That Describes Token Document
       ├── routes/                # API route definitions
-         ├── agentRouter           # Defined Endpoints for Agents
-         ├── articleRouter         # Defined Endpoints for Articles
-         ├── authRoutes            # Defined Endpoints for Authentication
-         ├── categoryRouter        # Defined Endpoints for Categories
+         ├── agentRouter           - Defined Endpoints for Agents
+         ├── articleRouter         - Defined Endpoints for Articles
+         ├── authRoutes            - Defined Endpoints for Authentication
+         ├── categoryRouter        - Defined Endpoints for Categories
       ├── server.js              # Main Server Entry File
    └── README.md                 # Project documentation
    ```
