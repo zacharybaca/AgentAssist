@@ -13,6 +13,7 @@
   font-optical-sizing: auto;
   font-weight: 800;
   font-style: normal;
+  box-sizing: border-box;
   border: 2px solid black;
   border-radius: 10px;
   background-color: #e8e8e8;
@@ -24,4 +25,14 @@
 
 .arrow-icon {
   margin-top: 1.5%;
+}
+
+@media screen and (min-width: 1440px) {
+  .main-sign-in-container {
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 10%;
+    padding-right: 10%;
+    gap: 10px;
+  }
 }
