@@ -12,16 +12,7 @@ import {
   CalendarSync,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-const [axis, setAxis] = React.useState(window.innerWidth <= 390 ? "y" : "x");
 
-React.useEffect(() => {
-  const handleResize = () => {
-    setAxis(window.innerWidth <= 390 ? "y" : "x");
-  };
-
-  window.addEventListener("resize", handleResize);
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
 
 const Sidebar = ({ isOpen, close }) => {
   const navigate = useNavigate();
@@ -138,6 +129,17 @@ const Sidebar = ({ isOpen, close }) => {
   const resetOrder = () => {
     setItems(defaultItems);
   };
+
+  const [axis, setAxis] = React.useState(window.innerWidth <= 390 ? "y" : "x");
+
+React.useEffect(() => {
+  const handleResize = () => {
+    setAxis(window.innerWidth <= 390 ? "y" : "x");
+  };
+
+  window.addEventListener("resize", handleResize);
+  return () => window.removeEventListener("resize", handleResize);
+}, []);
 
   return (
     isOpen && (
