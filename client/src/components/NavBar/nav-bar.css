@@ -10,23 +10,16 @@
   max-height: fit-content;
   box-sizing: border-box;
   background-color: #e8e8e8;
-  overflow: hidden;
-  position: fixed;
-  bottom: 0.75;
   border: 2px solid black;
   border-radius: 10px;
 }
 
 @media screen and (max-width: 390px) {
   #nav-main-container {
+    overflow: hidden;
+    position: fixed;
     min-width: 90vw;
     max-width: 90vw;
     bottom: 0.75;
-  }
-}
-
-@media screen and (min-width: 1440px) {
-  #nav-main-container {
-    top: 0.75;
   }
 }
