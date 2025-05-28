@@ -68,10 +68,6 @@
   box-sizing: border-box;
 }
 
-#loader {
-  border: 2px solid green;
-}
-
 #loading-tagline {
   text-align: center;
   white-space: normal;
