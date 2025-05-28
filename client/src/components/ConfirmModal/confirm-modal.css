@@ -22,19 +22,19 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
   z-index: 1001;
   outline: none;
-  color: white;
+  color: black;
   font-family: "Winky Rough", sans-serif;
   font-optical-sizing: auto;
   font-weight: 800;
   font-style: normal;
-  background-color: #004ca1;
+  background-color: #afcbe8;
   border: 3px solid black;
 }
 
 .modal-header {
   display: flex;
   justify-content: flex-end;
-  color: white;
+  color: black;
   font-family: "Winky Rough", sans-serif;
   font-optical-sizing: auto;
   font-weight: 800;
@@ -46,7 +46,7 @@
   border: none;
   cursor: pointer;
   padding: 4px;
-  color: white;
+  color: black;
   font-family: "Winky Rough", sans-serif;
   font-optical-sizing: auto;
   font-weight: 800;
@@ -59,7 +59,7 @@
   font-size: 16px;
   color: #333;
   text-align: center;
-  color: white;
+  color: black;
   font-family: "Winky Rough", sans-serif;
   font-optical-sizing: auto;
   font-weight: 800;
@@ -70,7 +70,7 @@
   display: flex;
   justify-content: space-between;
   gap: 12px;
-  color: white;
+  color: black;
   font-family: "Winky Rough", sans-serif;
   font-optical-sizing: auto;
   font-weight: 800;
@@ -85,7 +85,7 @@
   font-size: 14px;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  color: white;
+  color: black;
   font-family: "Winky Rough", sans-serif;
   font-optical-sizing: auto;
   font-weight: 800;
@@ -94,7 +94,7 @@
 
 .cancel-btn {
   background-color: #e8e8e8;
-  color: white;
+  color: black;
   font-family: "Winky Rough", sans-serif;
   font-optical-sizing: auto;
   font-weight: 800;
@@ -111,7 +111,7 @@
 
 .confirm-btn {
   background-color: #e53935;
-  color: #fff;
+  color: black;
   font-family: "Winky Rough", sans-serif;
   font-optical-sizing: auto;
   font-weight: 800;
