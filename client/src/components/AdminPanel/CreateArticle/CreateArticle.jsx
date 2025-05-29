@@ -198,6 +198,10 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
   return (
     <form className="create-article-container" onSubmit={handleSubmit}>
       <div>
+        <h1 className="mb-4">Create An Article</h1>
+        <hr />
+      </div>
+      <div>
         <label htmlFor="title">Article Title</label>
         <input
           id="title"

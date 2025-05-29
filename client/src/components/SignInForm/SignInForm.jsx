@@ -28,6 +28,7 @@ const SignInForm = () => {
           Sign In to AgentAssist
           <i className="bi bi-headset"></i>
         </h2>
+        <hr />
         <Form.Group controlId="username" className="mb-3">
           <Form.Label>Enter Your Username:</Form.Label>
           <Form.Control

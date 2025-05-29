@@ -13,6 +13,10 @@
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
+.create-article-container h1 {
+  color: dodgerblue;
+}
+
 .create-article-container > div {
   margin-bottom: 1.2rem;
 }
