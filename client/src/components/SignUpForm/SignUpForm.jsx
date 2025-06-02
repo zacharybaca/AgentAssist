@@ -26,9 +26,12 @@ export default function SignUpForm() {
       >
         <h2 className="mb-4">Create Account</h2>
 
+        <hr />
+
         <Form.Group controlId="name" className="mb-3">
           <Form.Label>Please Enter Your Name:</Form.Label>
           <Form.Control
+            className="shadow-lg"
             type="text"
             name="name"
             placeholder="Full Name"
@@ -41,6 +44,7 @@ export default function SignUpForm() {
         <Form.Group controlId="email" className="mb-3">
           <Form.Label>Please Enter Your E-mail Address:</Form.Label>
           <Form.Control
+            className="shadow-lg"
             type="email"
             name="email"
             placeholder="Email"
@@ -53,6 +57,7 @@ export default function SignUpForm() {
         <Form.Group controlId="username" className="mb-3">
           <Form.Label>Please Create A Username:</Form.Label>
           <Form.Control
+            className="shadow-lg"
             type="text"
             name="username"
             placeholder="Username"
@@ -65,6 +70,7 @@ export default function SignUpForm() {
         <Form.Group controlId="password" className="mb-3">
           <Form.Label>Please Create A Secure Password:</Form.Label>
           <Form.Control
+            className="shadow-lg"
             type="password"
             name="password"
             placeholder="Password"
@@ -77,6 +83,7 @@ export default function SignUpForm() {
         <Form.Group controlId="confirmPassword" className="mb-3">
           <Form.Label>Please Confirm Your Chosen Password:</Form.Label>
           <Form.Control
+            className="shadow-lg"
             type="password"
             name="confirmPassword"
             placeholder="Confirm Password"

@@ -12,7 +12,7 @@ import {
   CalendarSync,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-
+import LogOutButton from "../LogOutButton/LogOutButton";
 
 const Sidebar = ({ isOpen, close }) => {
   const navigate = useNavigate();
@@ -132,21 +132,20 @@ const Sidebar = ({ isOpen, close }) => {
 
   const [axis, setAxis] = React.useState(window.innerWidth <= 390 ? "y" : "x");
 
-React.useEffect(() => {
-  const handleResize = () => {
-    setAxis(window.innerWidth <= 390 ? "y" : "x");
-  };
+  React.useEffect(() => {
+    const handleResize = () => {
+      setAxis(window.innerWidth <= 390 ? "y" : "x");
+    };
 
-  window.addEventListener("resize", handleResize);
-  return () => window.removeEventListener("resize", handleResize);
-}, []);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   return (
     isOpen && (
       <div className={`side-bar-container ${darkMode ? "dark-mode" : ""}`}>
         <div className="controls">
           <div className="axis-toggle">
-            <span>{darkMode ? "Dark Mode On" : "Dark Mode Off"}</span>
             <label className="switch">
               <input
                 type="checkbox"
@@ -159,6 +158,7 @@ React.useEffect(() => {
           <div className="reset-button-container">
             <button onClick={resetOrder}>Reset Order</button>
           </div>
+          <LogOutButton />
         </div>
 
         <AnimatePresence>

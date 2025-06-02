@@ -32,6 +32,7 @@ const SignInForm = () => {
         <Form.Group controlId="username" className="mb-3">
           <Form.Label>Enter Your Username:</Form.Label>
           <Form.Control
+            className="shadow-lg"
             type="text"
             name="username"
             placeholder="Username"
@@ -44,6 +45,7 @@ const SignInForm = () => {
         <Form.Group controlId="password" className="mb-3">
           <Form.Label>Enter Your Password:</Form.Label>
           <Form.Control
+            className="shadow-lg"
             type="password"
             name="password"
             placeholder="Password"

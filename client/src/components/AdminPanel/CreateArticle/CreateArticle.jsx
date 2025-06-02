@@ -204,6 +204,7 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
       <div>
         <label htmlFor="title">Article Title</label>
         <input
+          className="shadow-lg"
           id="title"
           type="text"
           value={title}
@@ -215,6 +216,7 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
       <div>
         <label htmlFor="selectOption">Status</label>
         <select
+          className="shadow-lg"
           id="selectOption"
           value={status}
           onChange={(e) => setStatus(e.target.value)}
@@ -227,6 +229,7 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
       <div>
         <label htmlFor="category">Category</label>
         <select
+          className="shadow-lg"
           id="category"
           value={category}
           onChange={(e) => setCategory(e.target.value)}
@@ -239,6 +242,7 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
       <div>
         <label htmlFor="tags">Tags (comma separated)</label>
         <input
+          className="shadow-lg"
           id="tags"
           type="text"
           value={tags}
@@ -282,6 +286,7 @@ const CreateArticle = ({ initialData = {}, onSuccess }) => {
           <span className="upload-button">Browse</span>
         </label>
         <input
+          className="shadow-lg"
           type="file"
           id="imageUpload"
           accept="image/*"
