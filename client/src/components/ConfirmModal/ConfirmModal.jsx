@@ -1,11 +1,17 @@
 /* eslint-disable no-unused-vars */
-import React, { useEffect, useRef } from 'react';
-import './confirm-modal.css';
-import { motion } from 'motion/react';
-import { AnimatePresence } from 'framer-motion';
-import { SquareX } from 'lucide-react';
+import React, { useEffect, useRef } from "react";
+import "./confirm-modal.css";
+import { motion, AnimatePresence } from "framer-motion";
+import { SquareX } from "lucide-react";
 
-const ConfirmModal = ({ isOpen, onCancel, onConfirm, confirmButton, rejectButton, message }) => {
+const ConfirmModal = ({
+  isOpen,
+  onCancel,
+  onConfirm,
+  confirmButton,
+  rejectButton,
+  message,
+}) => {
   const modalRef = useRef(null);
 
   // Focus the modal when it opens
@@ -16,7 +22,7 @@ const ConfirmModal = ({ isOpen, onCancel, onConfirm, confirmButton, rejectButton
   }, [isOpen]);
 
   const handleBackdropClick = (e) => {
-    if (e.target.classList.contains('modal-backdrop')) {
+    if (e.target.classList.contains("modal-backdrop")) {
       onCancel();
     }
   };
@@ -45,7 +51,7 @@ const ConfirmModal = ({ isOpen, onCancel, onConfirm, confirmButton, rejectButton
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.2, ease: 'easeOut' }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
           >
             <div className="modal-header">
               <button
@@ -60,15 +66,23 @@ const ConfirmModal = ({ isOpen, onCancel, onConfirm, confirmButton, rejectButton
 
             <div className="modal-body">
               <p id="confirm-modal-message">
-                {message || 'Are you sure you want to proceed?'}
+                {message || "Are you sure you want to proceed?"}
               </p>
             </div>
 
             <div className="modal-footer">
-              <button onClick={onCancel} type="button" className="modal-btn cancel-btn">
+              <button
+                onClick={onCancel}
+                type="button"
+                className="modal-btn cancel-btn"
+              >
                 {rejectButton}
               </button>
-              <button onClick={onConfirm} type="button" className="modal-btn confirm-btn">
+              <button
+                onClick={onConfirm}
+                type="button"
+                className="modal-btn confirm-btn"
+              >
                 {confirmButton}
               </button>
             </div>

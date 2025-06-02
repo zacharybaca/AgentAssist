@@ -1,0 +1,96 @@
+.dashboard-container {
+  width: 480px;
+  height: 60vh;
+  max-height: 360px;
+  border-radius: 10px;
+  background: white;
+  overflow: hidden;
+  box-sizing: border-box;
+  box-shadow: 0 1px 1px hsl(0deg 0% 0% / 0.075),
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.075),
+    0 2px 2px hsl(0deg 0% 0% / 0.075), 0 4px 4px hsl(0deg 0% 0% / 0.075),
+    0 8px 8px hsl(0deg 0% 0% / 0.075), 0 16px 16px hsl(0deg 0% 0% / 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Nav container */
+.nav {
+  background: #fdfdfd;
+  padding: 5px 5px 0;
+  border-radius: 10px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom: 1px solid #eeeeee;
+  height: 44px;
+}
+
+/* Shared tab styles */
+.tabs {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+/* Tabs container */
+.tabs-container {
+  display: flex;
+  width: 100%;
+}
+
+/* Individual tab */
+.tab {
+  border-radius: 5px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  width: 100%;
+  padding: 20px 10px 20px 10px;
+  position: relative;
+  background: white;
+  cursor: pointer;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  min-width: 0;
+  user-select: none;
+  color: #0f1115;
+}
+
+/* Underline for selected tab */
+.underline {
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+}
+
+/* Icon container inside tab */
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+/* Icon inside container */
+.icon {
+  font-size: 128px;
+}
+
+@media screen and (max-width: 390px) {
+  .dashboard-container {
+    width: 300px;
+  }
+
+  .tab {
+    flex-direction: column;
+    padding: 35px 30px 35px 15px;
+  }
+}

@@ -14,6 +14,7 @@ import ArticleRating from "./components/ArticleRating/ArticleRating.jsx";
 import AdminPanel from "./components/AdminPanel/AdminPanel.jsx";
 import SignInForm from "./components/SignInForm/SignInForm.jsx";
 import ViewArticle from "./components/ViewArticle/ViewArticle.jsx";
+import UserInfoDashboard from "./components/UserInfoDashboard/UserInfoDashboard.jsx";
 
 function App() {
   const navigate = useNavigate();
@@ -50,6 +51,8 @@ function App() {
           <img src={Logo} alt="logo" />
           <h1>☎️"Answers at the speed of your next call"☎️</h1>
         </div>
+
+        <UserInfoDashboard />
 
         <Routes>
           <Route exact path="/" element={<SignInForm />} />
