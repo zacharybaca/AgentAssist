@@ -3,6 +3,12 @@ import React, { useCallback, useRef, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import AvatarEditor from 'react-avatar-editor';
 import AvatarSelector from '../AvatarSelector/AvatarSelector.jsx';
+import HeadsetAvatar from '../../assets/random-avatars/customer-service-headset.png';
+import FemaleOperatorTwoAvatar from '../../assets/random-avatars/female-operator-2.png';
+import FemaleOperatorAvatar from '../../assets/random-avatars/female-operator.png';
+import MaleOperatorTwoAvatar from '../../assets/random-avatars/male-operator-2.png';
+import MaleOperatorThreeAvatar from '../../assets/random-avatars/male-operator-3.png';
+import MaleOperatorAvatar from '../../assets/random-avatars/male-operator.png';
 
 export default function AvatarUpload({ onUploadComplete }) {
     const [image, setImage] = useState(null);
@@ -62,12 +68,12 @@ export default function AvatarUpload({ onUploadComplete }) {
 
     const predefinedAvatars = [
         '',
-        '../../assets/random-avatars/customer-service-headset.png',
-        '../../assets/random-avatars/female-operator-2.png',
-        '../../assets/random-avatars/female-operator.png',
-        '../../assets/random-avatars/male-operator-2.png',
-        '../../assets/random-avatars/male-operator-3.png',
-        '../../assets/random-avatars/male-operator.png'
+        HeadsetAvatar,
+        FemaleOperatorTwoAvatar,
+        FemaleOperatorAvatar,
+        MaleOperatorTwoAvatar,
+        MaleOperatorThreeAvatar,
+        MaleOperatorAvatar
     ];
 
     return (
