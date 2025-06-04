@@ -5,6 +5,7 @@ const BlacklistedToken = require("../models/Token");
 export const authenticateUser = jwt({
   secret: process.env.SECRET,
   algorithms: ["HS256"],
+  requestProperty: "user", // <- This changes req.auth → req.user
   isRevoked: async (req, token) => {
     if (!token?.jti) return true;
 
@@ -37,13 +38,14 @@ export const requireAgent = (req, res, next) => {
 
 export const requireAuth = (req, res, next) => {
   const { agentId } = req.params;
-  const loggedInUser = req.auth?.userId;
+  const loggedInUserId = req.user?._id;
 
-  if (!loggedInUser)
+  if (!loggedInUserId) {
     return res.status(403).json({ error: "No Logged In User Detected" });
+  }
 
   try {
-    if (agentId !== loggedInUser.toString()) {
+    if (agentId !== loggedInUserId.toString()) {
       return res
         .status(403)
         .json({ error: "Unauthorized access to this agent's data." });
