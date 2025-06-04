@@ -65,9 +65,10 @@ export const login = async (req, res) => {
       return res.status(401).json({ message: "Invalid credentials." });
 
     // Sign JWT
+    // Instead of `userId`, you could use `_id` if you prefer shorter access
     const token = jwt.sign(
-      { userId: user._id, username: user.username, role: user.role },
-      process.env.SECRET,
+      { _id: user._id, username: user.username, role: user.role },
+        process.env.SECRET,
       { algorithm: "HS256", expiresIn: "1h", jwtid: uuidv4() }
     );
 
