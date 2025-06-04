@@ -67,7 +67,6 @@ export default function AvatarUpload({ onUploadComplete }) {
     };
 
     const predefinedAvatars = [
-        '',
         HeadsetAvatar,
         FemaleOperatorTwoAvatar,
         FemaleOperatorAvatar,
