@@ -37,13 +37,13 @@ export const requireAgent = (req, res, next) => {
 
 export const requireAuth = (req, res, next) => {
   const { agentId } = req.params;
-  const loggedInUser = req.auth?._id;
+  const loggedInUser = req.auth?.userId;
 
   if (!loggedInUser)
     return res.status(403).json({ error: "No Logged In User Detected" });
 
   try {
-    if (agentId !== loggedInUser) {
+    if (agentId !== loggedInUser.toString()) {
       return res
         .status(403)
         .json({ error: "Unauthorized access to this agent's data." });
