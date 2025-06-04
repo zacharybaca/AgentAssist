@@ -1,0 +1,18 @@
+.avatar-mode-toggle {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.avatar-mode-toggle button {
+    padding: 6px 12px;
+    background-color: #e0e0e0;
+    border: none;
+    cursor: pointer;
+    border-radius: 6px;
+}
+
+.avatar-mode-toggle button.active {
+    background-color: #007bff;
+    color: white;
+}
