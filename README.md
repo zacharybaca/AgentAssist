@@ -28,6 +28,30 @@ AgentAssist is built to enhance the customer support experience by equipping age
       ├── src
          ├── assets                ## Images or media files
          ├── components            ## Components used in the application
+           ├── AdminPanel
+           ├── AlertNotification
+           ├── ArticleList
+           ├── ArticleRating
+           ├── AvatarPhoto
+           ├── AvatarSelector
+           ├── AvatarUpload
+           ├── ConfirmModal
+           ├── CreateCategory
+           ├── EditProfile
+           ├── Footer
+           ├── Loader
+           ├── LoginForm
+           ├── LogOutButton
+           ├── MenuToggle
+           ├── NavBar
+           ├── ReOrderIcons
+           ├── ResetOrderButton
+           ├── SideBar
+           ├── SignInForm
+           ├── SignUpForm
+           ├── ToggleAxis
+           ├── UserInfoDashboard
+           ├── ViewArticle
          ├── context               ## Used for global state management for components
          ├── hooks                 ## Custom hooks used for context functionality
          ├── App.css               ## Global CSS file
@@ -56,6 +80,8 @@ AgentAssist is built to enhance the customer support experience by equipping age
          ├── articleRouter           - Defined Endpoints for Articles
          ├── authRoutes              - Defined Endpoints for Authentication
          ├── categoryRouter          - Defined Endpoints for Categories
+      ├── utils/                   ## Utility/Helper Functions
+         ├── getUserId.js            - Function That Returns the ID of the Logged In User
       ├── server.js                ## Main Server Entry File
    └── README.md                   ## Project documentation
    ```
