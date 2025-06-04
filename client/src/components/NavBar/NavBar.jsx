@@ -1,6 +1,7 @@
 import "./nav-bar.css";
 import MenuToggle from "../MenuToggle/MenuToggle.jsx";
 import Sidebar from "../SideBar/SideBar.jsx";
+import AvatarPhoto from "../AvatarPhoto/AvatarPhoto.jsx";
 import { useMenuToggle } from "../../hooks/useMenuToggle.js";
 
 const Navbar = () => {
@@ -9,7 +10,13 @@ const Navbar = () => {
   return (
     <div id="nav-main-container">
       <div id="menu-toggle-container">
-        <MenuToggle isOpen={menuOpen} toggle={toggleMenu} />
+        <div>
+          <MenuToggle isOpen={menuOpen} toggle={toggleMenu} />
+        </div>
+
+        <div>
+          <AvatarPhoto />
+        </div>
       </div>
 
       <nav>

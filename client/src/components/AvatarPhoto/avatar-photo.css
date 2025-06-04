@@ -1,0 +1,12 @@
+#profile-avatar-container {
+  max-width: fit-content;
+  max-height: fit-content;
+  background-color: dodgerblue;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+
+#profile-avatar-container img {
+  width: 60px;
+  height: 60px;
+}

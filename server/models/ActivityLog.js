@@ -1,7 +1,11 @@
 const mongoose = require("mongoose");
 
 const activityLogSchema = new mongoose.Schema({
-  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true },
+  userId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "Agent",
+    required: true,
+  },
   jti: { type: String, required: true },
   method: String,
   endpoint: String,
