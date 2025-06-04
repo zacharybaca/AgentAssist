@@ -16,3 +16,15 @@
     background-color: #007bff;
     color: white;
 }
+
+.avatar-upload-container {
+    border: 2px solid black;
+}
+
+@media screen and (min-width: 768px) {
+    .avatar-upload-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
