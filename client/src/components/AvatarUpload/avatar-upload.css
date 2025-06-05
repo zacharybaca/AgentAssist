@@ -19,8 +19,13 @@
 }
 
 .avatar-upload-container {
+    overflow-y: auto;
+    overflow-x: auto;
+    background-color: #f9fafb;
     border: 2px solid black;
-    border-radius: 10px;
+    border-radius: 12px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    padding: 2rem 0;
 }
 
 @media screen and (min-width: 768px) {
