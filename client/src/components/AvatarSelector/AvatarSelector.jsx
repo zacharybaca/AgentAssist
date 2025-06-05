@@ -9,7 +9,7 @@ export default function AvatarSelector({ avatars = [], selectedAvatar, onSelect 
                     key={url}
                     src={url}
                     alt="Predefined avatar"
-                    className={`avatar-option ${selectedAvatar === url ? 'selected' : ''}`}
+                    className={`card avatar-option ${selectedAvatar === url ? 'selected' : ''}`}
                     onClick={() => onSelect(url)}
                 />
             ))}
