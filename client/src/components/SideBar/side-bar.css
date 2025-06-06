@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Markazi+Text:wght@400..700&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Metamorphous&family=Permanent+Marker&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Metamorphous&family=Permanent+Marker&display=swap");
 
 #menu-icon-list {
   display: grid;
@@ -16,7 +16,12 @@
 
 #menu-icon-list li {
   text-align: center;
-  color: #0B5ED7;
+  color: #0b5ed7;
+  border: 3px solid yellow;
+}
+
+#menu-icon-list-container {
+  border: 3px solid orange;
 }
 
 .side-bar-container {
@@ -146,18 +151,17 @@ input:checked + .slider:before {
     align-items: center; /* Center contents like icons + text */
     justify-content: center;
     text-align: center;
-    color: #0B5ED7;
+    color: #0b5ed7;
     width: 100%;
   }
 
   .controls {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
-  border: 3px solid blue;
-}
-
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    border: 3px solid blue;
+  }
 }

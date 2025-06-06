@@ -10,7 +10,8 @@ import {
   Lock,
   Mail,
   CalendarSync,
-  ScrollText,
+  FileText,
+  Wrench,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import LogOutButton from "../LogOutButton/LogOutButton";
@@ -66,11 +67,18 @@ const defaultItems = [
     path: "/my-schedule",
   },
   {
-    icon: ScrollText,
+    icon: FileText,
     size: 35,
     title: "Call Scripts",
     color: "#1D5A8E",
     path: "/call-scripts",
+  },
+  {
+    icon: Wrench,
+    size: 35,
+    title: "Troubleshooting",
+    color: "#1D5A8E",
+    path: "/troubleshooting",
   },
 ];
 
@@ -160,24 +168,26 @@ const Sidebar = ({ isOpen, close }) => {
               exit={{ y: "-100%" }}
               transition={{ type: "spring", bounce: 0.5 }}
             >
-              <Reorder.Group axis={axis} values={items} onReorder={setItems}>
-                <ul id="menu-icon-list" style={{ padding: 0 }}>
-                  {items.map((item) => (
-                    <Reorder.Item
-                      key={item.title}
-                      value={item}
-                      as="li"
-                      onClick={() => handleItemClick(item.path)}
-                      style={{ cursor: "pointer", listStyleType: "none" }}
-                    >
-                      <div>
-                        <item.icon size={item.size} color={item.color} />
-                        <h3>{item.title}</h3>
-                      </div>
-                    </Reorder.Item>
-                  ))}
-                </ul>
-              </Reorder.Group>
+              <div id="menu-icon-list-container">
+                <Reorder.Group axis={axis} values={items} onReorder={setItems}>
+                  <ul id="menu-icon-list" style={{ padding: 0 }}>
+                    {items.map((item) => (
+                      <Reorder.Item
+                        key={item.title}
+                        value={item}
+                        as="li"
+                        onClick={() => handleItemClick(item.path)}
+                        style={{ cursor: "pointer", listStyleType: "none" }}
+                      >
+                        <div>
+                          <item.icon size={item.size} color={item.color} />
+                          <h3>{item.title}</h3>
+                        </div>
+                      </Reorder.Item>
+                    ))}
+                  </ul>
+                </Reorder.Group>
+              </div>
             </motion.div>
           </>
         </AnimatePresence>
@@ -188,178 +198,175 @@ const Sidebar = ({ isOpen, close }) => {
 
 export default Sidebar;
 
+// import "./side-bar.css";
+// import React from "react";
+// import { motion, AnimatePresence, Reorder } from "framer-motion";
+// import {
+//   FileHeart,
+//   Newspaper,
+//   UserCog,
+//   SquareCheck,
+//   Lock,
+//   Mail,
+//   CalendarSync,
+//   ScrollText,
+// } from "lucide-react";
+// import { useNavigate } from "react-router-dom";
+// import LogOutButton from "../LogOutButton/LogOutButton";
 
-/* /* eslint-disable no-unused-vars */
-import "./side-bar.css";
-import React from "react";
-import { motion, AnimatePresence, Reorder } from "framer-motion";
-import {
-  FileHeart,
-  Newspaper,
-  UserCog,
-  SquareCheck,
-  Lock,
-  Mail,
-  CalendarSync,
-  ScrollText,
-} from "lucide-react";
-import { useNavigate } from "react-router-dom";
-import LogOutButton from "../LogOutButton/LogOutButton";
+// // Icon mapping
+// const iconMap = {
+//   Newspaper,
+//   FileHeart,
+//   UserCog,
+//   SquareCheck,
+//   Lock,
+//   Mail,
+//   CalendarSync,
+//   ScrollText,
+// };
 
-// Icon mapping
-const iconMap = {
-  Newspaper,
-  FileHeart,
-  UserCog,
-  SquareCheck,
-  Lock,
-  Mail,
-  CalendarSync,
-  ScrollText,
-};
+// // Default sidebar items
+// const defaultItems = [
+//   { icon: Newspaper, size: 35, title: "Articles", color: "#1D5A8E", path: "/articles" },
+//   { icon: FileHeart, size: 35, title: "My Favorite Articles", color: "#1D5A8E", path: "/favorites" },
+//   { icon: UserCog, size: 35, title: "Agent Settings", color: "#1D5A8E", path: "/settings" },
+//   { icon: SquareCheck, size: 35, title: "My Tasks", color: "#1D5A8E", path: "/tasks" },
+//   { icon: Lock, size: 35, title: "Admin Panel", color: "#1D5A8E", path: "/admin-panel", isAdminOnly: true },
+//   { icon: Mail, size: 35, title: "E-Mail Templates", color: "#1D5A8E", path: "/email-templates" },
+//   { icon: CalendarSync, size: 35, title: "My Schedule", color: "#1D5A8E", path: "/my-schedule" },
+//   { icon: ScrollText, size: 35, title: "Call Scripts", color: "#1D5A8E", path: "/call-scripts" },
+// ];
 
-// Default sidebar items
-const defaultItems = [
-  { icon: Newspaper, size: 35, title: "Articles", color: "#1D5A8E", path: "/articles" },
-  { icon: FileHeart, size: 35, title: "My Favorite Articles", color: "#1D5A8E", path: "/favorites" },
-  { icon: UserCog, size: 35, title: "Agent Settings", color: "#1D5A8E", path: "/settings" },
-  { icon: SquareCheck, size: 35, title: "My Tasks", color: "#1D5A8E", path: "/tasks" },
-  { icon: Lock, size: 35, title: "Admin Panel", color: "#1D5A8E", path: "/admin-panel", isAdminOnly: true },
-  { icon: Mail, size: 35, title: "E-Mail Templates", color: "#1D5A8E", path: "/email-templates" },
-  { icon: CalendarSync, size: 35, title: "My Schedule", color: "#1D5A8E", path: "/my-schedule" },
-  { icon: ScrollText, size: 35, title: "Call Scripts", color: "#1D5A8E", path: "/call-scripts" },
-];
+// // Fallback component for missing icons
+// const FallbackIcon = () => (
+//   <div style={{ fontSize: 20, color: "red", fontWeight: "bold" }}>?</div>
+// );
 
-// Fallback component for missing icons
-const FallbackIcon = () => (
-  <div style={{ fontSize: 20, color: "red", fontWeight: "bold" }}>?</div>
-);
+// const Sidebar = ({ isOpen, close, user }) => {
+//   const navigate = useNavigate();
+//   const [darkMode, setDarkMode] = React.useState(() =>
+//     JSON.parse(localStorage.getItem("dark-mode")) || false
+//   );
+//   const [compactMode, setCompactMode] = React.useState(false);
+//   const [searchTerm, setSearchTerm] = React.useState("");
 
-const Sidebar = ({ isOpen, close, user }) => {
-  const navigate = useNavigate();
-  const [darkMode, setDarkMode] = React.useState(() =>
-    JSON.parse(localStorage.getItem("dark-mode")) || false
-  );
-  const [compactMode, setCompactMode] = React.useState(false);
-  const [searchTerm, setSearchTerm] = React.useState("");
+//   const hydrateIcons = (arr) =>
+//     arr
+//       .filter((item) => !item.isAdminOnly || user?.isAdmin)
+//       .map((item) => {
+//         const iconComponent =
+//           iconMap[item.icon] || iconMap[item.title.replace(/\s/g, "")];
 
-  const hydrateIcons = (arr) =>
-    arr
-      .filter((item) => !item.isAdminOnly || user?.isAdmin)
-      .map((item) => {
-        const iconComponent =
-          iconMap[item.icon] || iconMap[item.title.replace(/\s/g, "")];
+//         if (!iconComponent) {
+//           console.warn(`⚠️ Sidebar icon not found for: "${item.icon}"`);
+//         }
 
-        if (!iconComponent) {
-          console.warn(`⚠️ Sidebar icon not found for: "${item.icon}"`);
-        }
+//         return {
+//           ...item,
+//           icon: iconComponent || FallbackIcon,
+//         };
+//       });
 
-        return {
-          ...item,
-          icon: iconComponent || FallbackIcon,
-        };
-      });
+//   const [items, setItems] = React.useState(() => {
+//     const saved = localStorage.getItem("sidebarItems");
+//     try {
+//       const parsed = saved ? JSON.parse(saved) : defaultItems;
+//       return hydrateIcons(parsed);
+//     } catch (err) {
+//       console.error("❌ Failed to parse sidebar items from localStorage:", err);
+//       return hydrateIcons(defaultItems);
+//     }
+//   });
 
-  const [items, setItems] = React.useState(() => {
-    const saved = localStorage.getItem("sidebarItems");
-    try {
-      const parsed = saved ? JSON.parse(saved) : defaultItems;
-      return hydrateIcons(parsed);
-    } catch (err) {
-      console.error("❌ Failed to parse sidebar items from localStorage:", err);
-      return hydrateIcons(defaultItems);
-    }
-  });
+//   React.useEffect(() => {
+//     const itemsToSave = items.map(({ icon, ...rest }) => ({
+//       ...rest,
+//       icon: Object.keys(iconMap).find((key) => iconMap[key] === icon),
+//     }));
+//     localStorage.setItem("sidebarItems", JSON.stringify(itemsToSave));
+//   }, [items]);
 
-  React.useEffect(() => {
-    const itemsToSave = items.map(({ icon, ...rest }) => ({
-      ...rest,
-      icon: Object.keys(iconMap).find((key) => iconMap[key] === icon),
-    }));
-    localStorage.setItem("sidebarItems", JSON.stringify(itemsToSave));
-  }, [items]);
+//   React.useEffect(() => {
+//     localStorage.setItem("dark-mode", JSON.stringify(darkMode));
+//   }, [darkMode]);
 
-  React.useEffect(() => {
-    localStorage.setItem("dark-mode", JSON.stringify(darkMode));
-  }, [darkMode]);
+//   const handleItemClick = (path) => path && navigate(path);
+//   const resetOrder = () =>
+//     setItems(hydrateIcons(defaultItems));
 
-  const handleItemClick = (path) => path && navigate(path);
-  const resetOrder = () =>
-    setItems(hydrateIcons(defaultItems));
+//   const [axis, setAxis] = React.useState(window.innerWidth <= 390 ? "y" : "x");
+//   React.useEffect(() => {
+//     const handleResize = () => setAxis(window.innerWidth <= 390 ? "y" : "x");
+//     window.addEventListener("resize", handleResize);
+//     return () => window.removeEventListener("resize", handleResize);
+//   }, []);
 
-  const [axis, setAxis] = React.useState(window.innerWidth <= 390 ? "y" : "x");
-  React.useEffect(() => {
-    const handleResize = () => setAxis(window.innerWidth <= 390 ? "y" : "x");
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+//   const filteredItems = items.filter((item) =>
+//     item.title.toLowerCase().includes(searchTerm.toLowerCase())
+//   );
 
-  const filteredItems = items.filter((item) =>
-    item.title.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+//   return (
+//     isOpen && (
+//       <div className={`side-bar-container ${darkMode ? "dark-mode" : ""}`}>
+//         <div className="controls">
+//           <div className="axis-toggle">
+//             <label className="switch">
+//               <input
+//                 type="checkbox"
+//                 checked={darkMode}
+//                 onChange={() => setDarkMode(!darkMode)}
+//               />
+//               <span className="slider" />
+//             </label>
+//           </div>
+//           <div className="reset-button-container">
+//             <button onClick={resetOrder}>Reset Order</button>
+//             <button onClick={() => setCompactMode(!compactMode)}>Toggle Compact</button>
+//           </div>
+//           <input
+//             type="text"
+//             className="sidebar-search"
+//             placeholder="Search..."
+//             value={searchTerm}
+//             onChange={(e) => setSearchTerm(e.target.value)}
+//           />
+//           <LogOutButton />
+//         </div>
 
-  return (
-    isOpen && (
-      <div className={`side-bar-container ${darkMode ? "dark-mode" : ""}`}>
-        <div className="controls">
-          <div className="axis-toggle">
-            <label className="switch">
-              <input
-                type="checkbox"
-                checked={darkMode}
-                onChange={() => setDarkMode(!darkMode)}
-              />
-              <span className="slider" />
-            </label>
-          </div>
-          <div className="reset-button-container">
-            <button onClick={resetOrder}>Reset Order</button>
-            <button onClick={() => setCompactMode(!compactMode)}>Toggle Compact</button>
-          </div>
-          <input
-            type="text"
-            className="sidebar-search"
-            placeholder="Search..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-          <LogOutButton />
-        </div>
+//         <AnimatePresence>
+//           <motion.div
+//             initial={{ y: "-100%" }}
+//             animate={{ y: 0 }}
+//             exit={{ y: "-100%" }}
+//             transition={{ type: "spring", bounce: 0.5 }}
+//           >
+//             <Reorder.Group axis={axis} values={filteredItems} onReorder={setItems}>
+//               <ul id="menu-icon-list" style={{ padding: 0 }}>
+//                 {filteredItems.map((item) => (
+//                   <Reorder.Item
+//                     key={item.title}
+//                     value={item}
+//                     as="li"
+//                     onClick={() => handleItemClick(item.path)}
+//                     style={{ cursor: "pointer", listStyleType: "none" }}
+//                   >
+//                     <div className="icon-with-badge">
+//                       <item.icon size={item.size} color={item.color} />
+//                       {item.badgeCount > 0 && (
+//                         <span className="badge">{item.badgeCount}</span>
+//                       )}
+//                       {!compactMode && <h3>{item.title}</h3>}
+//                     </div>
+//                   </Reorder.Item>
+//                 ))}
+//               </ul>
+//             </Reorder.Group>
+//           </motion.div>
+//         </AnimatePresence>
+//       </div>
+//     )
+//   );
+// };
 
-        <AnimatePresence>
-          <motion.div
-            initial={{ y: "-100%" }}
-            animate={{ y: 0 }}
-            exit={{ y: "-100%" }}
-            transition={{ type: "spring", bounce: 0.5 }}
-          >
-            <Reorder.Group axis={axis} values={filteredItems} onReorder={setItems}>
-              <ul id="menu-icon-list" style={{ padding: 0 }}>
-                {filteredItems.map((item) => (
-                  <Reorder.Item
-                    key={item.title}
-                    value={item}
-                    as="li"
-                    onClick={() => handleItemClick(item.path)}
-                    style={{ cursor: "pointer", listStyleType: "none" }}
-                  >
-                    <div className="icon-with-badge">
-                      <item.icon size={item.size} color={item.color} />
-                      {item.badgeCount > 0 && (
-                        <span className="badge">{item.badgeCount}</span>
-                      )}
-                      {!compactMode && <h3>{item.title}</h3>}
-                    </div>
-                  </Reorder.Item>
-                ))}
-              </ul>
-            </Reorder.Group>
-          </motion.div>
-        </AnimatePresence>
-      </div>
-    )
-  );
-};
-
-export default Sidebar;
-*/
+// export default Sidebar;
