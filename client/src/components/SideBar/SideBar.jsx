@@ -12,6 +12,8 @@ import {
   CalendarSync,
   FileText,
   Wrench,
+  ClipboardList,
+  Book,
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import LogOutButton from "../LogOutButton/LogOutButton";
@@ -80,6 +82,20 @@ const defaultItems = [
     title: "Trouble Shooting",
     color: "#1D5A8E",
     path: "/troubleshooting",
+  },
+  {
+    icon: ClipboardList,
+    size: 35,
+    title: "Policies",
+    color: "#1D5A8E",
+    path: "/policies",
+  },
+  {
+    icon: Book,
+    size: 35,
+    title: "Frequently Used References",
+    color: "#1D5A8E",
+    path: "/frequently-used-references",
   },
 ];
 
