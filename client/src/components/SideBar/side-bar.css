@@ -25,7 +25,9 @@
   min-height: 100%;
   max-height: 100%;
   color: #0b5ed7;
-  border: 3px solid yellow;
+  background-color: #ffffff;
+  border: 2px solid black;
+  border-radius: 10px;
 }
 
 #menu-icon-list-container {
@@ -34,6 +36,7 @@
   box-sizing: border-box;
   min-width: 100%;
   max-width: 100%;
+  overflow: auto;
   border: 3px solid orange;
 }
 
@@ -150,6 +153,10 @@ input:checked + .slider:before {
     gap: 10px;
     max-width: 88vw;
     min-width: 88vw;
+    min-height: 80vh;
+    max-height: 80vh;
+    overflow-x: scroll;
+    overflow-y: scroll;
     font-family: "Metamorphous", serif;
     font-weight: 400;
     font-style: normal;
