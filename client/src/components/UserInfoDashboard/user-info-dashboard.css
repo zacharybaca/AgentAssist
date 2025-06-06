@@ -24,6 +24,7 @@
   border-bottom-right-radius: 0;
   border-bottom: 1px solid #eeeeee;
   height: 44px;
+  z-index: -1;
 }
 
 /* Shared tab styles */
