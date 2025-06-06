@@ -51,6 +51,7 @@ const defaultItems = [
     title: "Admin Panel",
     color: "#1D5A8E",
     path: "/admin-panel",
+    isAdminOnly: true,
   },
   {
     icon: Mail,
@@ -76,13 +77,13 @@ const defaultItems = [
   {
     icon: Wrench,
     size: 35,
-    title: "Troubleshooting",
+    title: "Trouble Shooting",
     color: "#1D5A8E",
     path: "/troubleshooting",
   },
 ];
 
-const Sidebar = ({ isOpen, close }) => {
+const Sidebar = ({ isOpen, close, user }) => {
   const navigate = useNavigate();
 
   const [darkMode, setDarkMode] = React.useState(() => {
@@ -96,10 +97,12 @@ const Sidebar = ({ isOpen, close }) => {
       try {
         const parsed = JSON.parse(saved);
         // Match by title to restore icons from defaultItems
-        return parsed.map((savedItem) => {
-          const match = defaultItems.find((d) => d.title === savedItem.title);
-          return match ? { ...match, ...savedItem } : savedItem;
-        });
+        return parsed
+          .map((savedItem) => {
+            const match = defaultItems.find((d) => d.title === savedItem.title);
+            return match ? { ...match, ...savedItem } : savedItem;
+          })
+          .filter((item) => !item.isAdminOnly || user?.isAdmin);
       } catch (err) {
         console.error("Failed to parse sidebar items:", err);
       }
@@ -179,9 +182,9 @@ const Sidebar = ({ isOpen, close }) => {
                         onClick={() => handleItemClick(item.path)}
                         style={{ cursor: "pointer", listStyleType: "none" }}
                       >
-                        <div>
+                        <div className="card item-container">
                           <item.icon size={item.size} color={item.color} />
-                          <h3>{item.title}</h3>
+                          <h3 className="card-title">{item.title}</h3>
                         </div>
                       </Reorder.Item>
                     ))}
