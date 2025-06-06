@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 const LogOutButton = () => {
   return (
     <div id="log-out-button-container">
-      <Button variant="primary">Log Out</Button>
+      <Button variant="danger">Log Out</Button>
     </div>
   );
 };
