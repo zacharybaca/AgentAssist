@@ -1,4 +1,5 @@
 import Agent from "../models/Agent.js";
+import { createAgent } from "./agentController.js";
 import jwt from "jsonwebtoken";
 const BlacklistedToken = require("../models/Token.js");
 const ActivityLog = require("../models/ActivityLog.js");
@@ -28,7 +29,7 @@ export const register = async (req, res) => {
       });
     }
 
-    const newUser = new Agent({
+    const newUser = createAgent({
       name,
       username,
       email,
@@ -68,7 +69,7 @@ export const login = async (req, res) => {
     // Instead of `userId`, you could use `_id` if you prefer shorter access
     const token = jwt.sign(
       { _id: user._id, username: user.username, role: user.role },
-        process.env.SECRET,
+      process.env.SECRET,
       { algorithm: "HS256", expiresIn: "1h", jwtid: uuidv4() }
     );
 
