@@ -2,6 +2,7 @@
 import "./user-info-dashboard.css";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { getLoggedInUserId } from "../../../../server/utils/getUserId.js";
 
 // Define the tabs array
 const tabs = [
@@ -15,7 +16,7 @@ export default function UserInfoDashboard() {
 
   return (
     <div className="dashboard-container">
-      <nav className="nav">
+      <nav className="nav-tab-container">
         <ul className="tabs-container tabs">
           {tabs.map((item) => (
             <motion.li

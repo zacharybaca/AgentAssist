@@ -52,7 +52,9 @@ function App() {
           <h1>☎️"Answers at the speed of your next call"☎️</h1>
         </div>
 
-        <UserInfoDashboard />
+        <div id="user-info-dashboard-container">
+          <UserInfoDashboard />
+        </div>
 
         <Routes>
           <Route exact path="/" element={<SignInForm />} />

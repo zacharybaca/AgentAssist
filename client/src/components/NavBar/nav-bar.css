@@ -23,6 +23,7 @@
   min-width: 100%;
   max-width: 100%;
   box-sizing: border-box;
+  z-index: 999;
 }
 
 @media screen and (max-width: 390px) {
